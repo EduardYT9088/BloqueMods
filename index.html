@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10251b">
+
+  <title>BloqueMods | Addons Minecraft Bedrock</title>
+
+  <style>
+    :root {
+      --fondo: #0b120e;
+      --panel: #14231a;
+      --verde: #45d483;
+      --texto: #f3fff6;
+      --gris: #a8b9ad;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--fondo);
+      color: var(--texto);
+    }
+
+    header {
+      padding: 30px 15px;
+      text-align: center;
+      background: linear-gradient(135deg, #163c28, #10251b);
+      border-bottom: 1px solid #294b35;
+    }
+
+    .logo {
+      width: 65px;
+      height: 65px;
+      margin: auto;
+      display: grid;
+      place-items: center;
+      border-radius: 17px;
+      background: var(--verde);
+      color: #082012;
+      font-size: 27px;
+      font-weight: bold;
+    }
+
+    header h1 {
+      margin: 12px 0 5px;
+      font-size: 35px;
+    }
+
+    header p {
+      color: #c9e8d2;
+      margin: 0;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 22px 15px 40px;
+    }
+
+    .buscador {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 22px;
+      border: 1px solid #355140;
+      border-radius: 12px;
+      background: #101b14;
+      color: white;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .buscador:focus {
+      border-color: var(--verde);
+    }
+
+    .titulo-seccion {
+      margin-bottom: 18px;
+      font-size: 23px;
+    }
+
+    .addons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+    }
+
+    .addon {
+      overflow: hidden;
+      background: var(--panel);
+      border: 1px solid #294534;
+      border-radius: 16px;
+    }
+
+    .portada {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #203a2a;
+    }
+
+    .contenido {
+      padding: 15px;
+    }
+
+    .contenido h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .categoria {
+      margin-bottom: 12px;
+      color: var(--verde);
+      font-size: 13px;
+    }
+
+    .descripcion {
+      color: var(--gris);
+      line-height: 1.5;
+      font-size: 14px;
+      min-height: 42px;
+    }
+
+    .descargar {
+      display: block;
+      width: 100%;
+      margin-top: 15px;
+      padding: 13px;
+      text-align: center;
+      text-decoration: none;
+      background: var(--verde);
+      color: #082012;
+      font-weight: bold;
+      border-radius: 10px;
+    }
+
+    .descargar:hover {
+      filter: brightness(1.1);
+    }
+
+    .sin-resultados {
+      display: none;
+      padding: 20px;
+      text-align: center;
+      color: var(--gris);
+    }
+
+    footer {
+      padding: 25px 15px;
+      text-align: center;
+      border-top: 1px solid #203629;
+      color: #81988a;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ENCABEZADO -->
+  <header>
+    <div class="logo">BM</div>
+
+    <h1>BloqueMods</h1>
+
+    <p>
+      Descubre los mejores addons para Minecraft Bedrock.
+    </p>
+  </header>
+
+  <main>
+
+    <!-- BUSCADOR -->
+    <input
+      type="search"
+      id="buscador"
+      class="buscador"
+      placeholder="🔎 Buscar addons..."
+      aria-label="Buscar addons"
+    >
+
+    <h2 class="titulo-seccion">
+      🟢 Últimos addons
+    </h2>
+
+    <!-- TARJETAS DE ADDONS -->
+    <section class="addons" id="listaAddons">
+
+      <!-- ADDON 1 -->
+      <article class="addon" data-nombre="proteccion de terreno v1">
+
+        <!-- CAMBIA ESTA URL POR LA DE TU IMAGEN -->
+        <img
+          class="portada"
+          src="https://placehold.co/640x360/163c28/ffffff?text=Proteccion+de+Terreno"
+          alt="Protección de Terreno V1"
+        >
+
+        <div class="contenido">
+
+          <h3>Protección de Terreno V1</h3>
+
+          <div class="categoria">
+            🧱 Protección · Minecraft Bedrock
+          </div>
+
+          <p class="descripcion">
+            Protege terrenos y administra tus zonas dentro de tu mundo.
+          </p>
+
+          <!-- PEGA AQUÍ EL ENLACE DE DESCARGA -->
+          <a
+            class="descargar"
+            href="https://www.mediafire.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ⬇ Descargar addon
+          </a>
+
+        </div>
+      </article>
+
+      <!-- ADDON 2 -->
+      <article class="addon" data-nombre="halo admin ui">
+
+        <img
+          class="portada"
+          src="https://placehold.co/640x360/183329/ffffff?text=Halo+Admin+UI"
+          alt="Halo Admin UI"
+        >
+
+        <div class="contenido">
+
+          <h3>Halo Admin UI</h3>
+
+          <div class="categoria">
+            ⚙️ Administración · Bedrock
+          </div>
+
+          <p class="descripcion">
+            Una interfaz para administrar tu mundo de Minecraft.
+          </p>
+
+          <a
+            class="descargar"
+            href="https://www.mediafire.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ⬇ Descargar addon
+          </a>
+
+        </div>
+      </article>
+
+      <!-- ADDON 3 -->
+      <article class="addon" data-nombre="supervivencia plus">
+
+        <img
+          class="portada"
+          src="https://placehold.co/640x360/25472f/ffffff?text=Supervivencia+Plus"
+          alt="Supervivencia Plus"
+        >
+
+        <div class="contenido">
+
+          <h3>Supervivencia Plus</h3>
+
+          <div class="categoria">
+            🌿 Supervivencia · Bedrock
+          </div>
+
+          <p class="descripcion">
+            Añade nuevas experiencias a tus aventuras de supervivencia.
+          </p>
+
+          <a
+            class="descargar"
+            href="https://www.mediafire.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ⬇ Descargar addon
+          </a>
+
+        </div>
+      </article>
+
+    </section>
+
+    <p id="sinResultados" class="sin-resultados">
+      No se encontraron addons.
+    </p>
+
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    © <span id="anio"></span> BloqueMods
+    <br>
+    Addons para Minecraft Bedrock
+  </footer>
+
+  <!-- FUNCIONES -->
+  <script>
+    // Año automático
+    document.getElementById("anio").textContent =
+      new Date().getFullYear();
+
+    // Buscador de addons
+    const buscador = document.getElementById("buscador");
+    const addons = document.querySelectorAll(".addon");
+    const sinResultados = document.getElementById("sinResultados");
+
+    buscador.addEventListener("input", function () {
+      const texto = this.value
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+      let encontrados = 0;
+
+      addons.forEach(function (addon) {
+        const nombre = addon.dataset.nombre
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "");
+
+        const descripcion = addon.textContent
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "");
+
+        const coincide =
+          nombre.includes(texto) ||
+          descripcion.includes(texto);
+
+        addon.style.display = coincide ? "" : "none";
+
+        if (coincide) encontrados++;
+      });
+
+      sinResultados.style.display =
+        encontrados === 0 ? "block" : "none";
+    });
+  </script>
+
+</body>
+</html>
