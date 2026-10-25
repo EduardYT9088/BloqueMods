@@ -1,0 +1,21 @@
+STICKERS PERSONALIZADOS
+
+Coloca aquí tus imágenes de stickers en formato PNG o WebP (preferiblemente con fondo transparente).
+
+Códigos automáticos y nombres de archivo esperados:
+$minecraft   -> minecraft.png
+$nuevo       -> nuevo.png
+$popular     -> popular.png
+$destacado   -> destacado.png
+$actualizado -> actualizado.png
+$gratis      -> gratis.png
+$premium     -> premium.png
+$texturas    -> texturas.png
+$addon       -> addon.png
+$mapa        -> mapa.png
+
+Ejemplo para un sticker con tu propio nombre:
+title: "$stickerimg[mi-sticker.png] Actions & Stuff 1.8",
+
+Guarda esa imagen como img/stickers/mi-sticker.png. El código se oculta del título visible.
+Si una imagen no existe, el sitio muestra el nombre del sticker como texto de respaldo.
