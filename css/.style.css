@@ -1,1 +1,69 @@
 
+/* /// COLORES GENERALES */
+:root{--bg:#0f172a;--panel:#1e293b;--panel2:#263449;--purple:#8b5cf6;--purple2:#7c3aed;--green:#10b981;--text:#f8fafc;--muted:#aab8ca;--border:#334155;--radius:18px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:radial-gradient(ellipse at top right,#30235a55,transparent 35%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+a{color:inherit;text-decoration:none}button,input,select{font:inherit}button{cursor:pointer}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* /// MENÚ SUPERIOR Y DESPLEGABLE */
+.navbar{min-height:68px;padding:10px max(16px,calc((100% - 1080px)/2));display:flex;align-items:center;justify-content:space-between;gap:15px;background:#1e293bf2;border-bottom:1px solid #ffffff12;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+.brand{font-weight:950;font-size:clamp(1.2rem,4vw,1.8rem);letter-spacing:-.7px;background:linear-gradient(90deg,#a78bfa,#34d399);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+.hamburger{width:48px;height:46px;border:1px solid var(--border);border-radius:14px;background:#111c30;color:white;font-size:26px}
+.menu{display:none;position:absolute;right:max(16px,calc((100% - 1080px)/2));top:calc(100% + 5px);width:min(270px,calc(100vw - 32px));padding:10px;background:var(--panel);border:1px solid var(--border);border-radius:15px;box-shadow:0 18px 45px #0008}
+.menu.open{display:block}.menu-title{padding:10px 12px;color:#c4b5fd;font-weight:800;border-bottom:1px solid var(--border);margin-bottom:5px}
+.menu a{display:block;padding:12px;border-radius:10px;color:var(--muted)}.menu a:hover{background:var(--panel2);color:white}
+/* /// PORTADA Y CRÉDITOS */
+.hero{padding:38px 16px 31px;text-align:center;background:linear-gradient(135deg,#251d43,#172b3a 65%,#12352d);border-bottom:1px solid #ffffff12}
+.logo{display:inline-grid;place-items:center;width:57px;height:57px;border-radius:16px;background:linear-gradient(135deg,var(--purple),var(--green));color:white;font-weight:950;font-size:24px;box-shadow:0 8px 28px #8b5cf633}
+.hero h1{font-size:clamp(30px,6vw,43px);line-height:1.15;margin:12px 0 7px;letter-spacing:-1px}.hero h1 span{background:linear-gradient(90deg,#c4b5fd,#6ee7b7);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{margin:0 auto;max-width:650px;color:#cbd5e1}.badge{display:inline-block;margin-top:17px;padding:5px 11px;border:1px solid #8b5cf655;background:#8b5cf61b;border-radius:999px;color:#ddd6fe;font-size:.8rem;font-weight:750}
+.credits{margin-top:12px!important;font-size:.9rem;color:var(--muted)}.credits strong,footer strong{color:#6ee7b7}
+/* /// BUSCADOR Y ORDENAMIENTO */
+main{width:min(1080px,100%);margin:auto;padding:25px 16px 48px}.catalog-tools{display:flex;gap:12px;align-items:stretch;flex-wrap:wrap}
+.searchbox{flex:1;min-width:220px}.searchbox input{width:100%;min-height:49px;padding:13px 15px;border:1px solid var(--border);border-radius:13px;background:#111c30;color:white;outline:none}
+.searchbox input:focus{border-color:var(--purple);box-shadow:0 0 0 3px #8b5cf622}.searchbox input::placeholder{color:#8492a7}
+.sortbox{display:flex;align-items:center;gap:9px;padding:0 12px;border:1px solid var(--border);border-radius:13px;background:var(--panel);color:var(--muted)}
+.sortbox select{max-width:170px;border:0;outline:none;background:transparent;color:white;padding:12px 0}.sortbox option{background:var(--panel)}
+/* /// FILTROS */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:17px 0 25px}.filter{border:1px solid var(--border);border-radius:999px;background:var(--panel);color:var(--muted);padding:9px 16px}
+.filter.active,.filter:hover{background:var(--purple);border-color:var(--purple);color:white;font-weight:750}
+/* /// TÍTULO DEL CATÁLOGO */
+.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:10px;margin:12px 0 18px}.sectionhead h2{margin:0;font-size:1.6rem}.sectionhead p{margin:4px 0 0;color:var(--muted)}.count{color:#c4b5fd;font-size:.9rem}
+/* /// TARJETAS Y PORTADAS */
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.card{min-width:0;overflow:hidden;background:linear-gradient(180deg,#1e293b,#172338);border:1px solid var(--border);border-radius:var(--radius);transition:transform .2s,border-color .2s,box-shadow .2s}
+.card:hover{transform:translateY(-4px);border-color:var(--purple);box-shadow:0 12px 32px #0003}.cover{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:linear-gradient(135deg,#234a42,#39265e)}
+.cover-fallback{display:grid;place-items:center;width:100%;aspect-ratio:16/9;font-size:54px;background:radial-gradient(circle at 25% 20%,#10b98155,transparent 45%),linear-gradient(135deg,#234a42,#39265e)}
+.content{padding:16px}.pill{display:inline-block;padding:5px 9px;margin-bottom:10px;border-radius:7px;background:#8b5cf622;color:#c4b5fd;font-size:.73rem;font-weight:800}
+.content h3{font-size:1.08rem;line-height:1.35;margin:0 0 8px}.content p{color:var(--muted);font-size:.9rem;line-height:1.55;margin:0;overflow-wrap:anywhere}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}.tag{padding:3px 8px;border-radius:999px;background:#0f172a;border:1px solid var(--border);color:#cbd5e1;font-size:.72rem}
+.meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:7px;color:#a5b4c7;font-size:.78rem;margin:15px 0}.btn{display:flex;align-items:center;justify-content:center;gap:7px;padding:12px;border-radius:11px;background:linear-gradient(90deg,var(--purple),var(--purple2));color:white;font-weight:800;text-align:center}
+.btn:hover{filter:brightness(1.15)}.btn.disabled{opacity:.55;pointer-events:none}
+/* /// RESULTADOS VACÍOS Y GUÍA */
+.empty{text-align:center;color:var(--muted);padding:32px 16px;border:1px dashed var(--border);border-radius:14px}.empty[hidden]{display:none}.empty-icon{font-size:42px}
+.reset-button{margin-top:8px;padding:10px 15px;border:0;border-radius:10px;background:var(--purple);color:white;font-weight:750}
+.note{margin-top:27px;padding:16px 18px;border:1px solid var(--border);border-radius:13px;background:#1e293b80;color:var(--muted);font-size:.9rem}.note strong{color:#ddd6fe}.note code{color:#6ee7b7;overflow-wrap:anywhere}
+footer{text-align:center;padding:24px 15px;border-top:1px solid #ffffff12;color:#8796aa;font-size:.85rem}footer p{margin:5px 0}footer a{color:#c4b5fd}
+/* /// ADAPTACIÓN A TABLETAS Y CELULARES */
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.navbar{min-height:62px}.hero{padding:29px 15px}main{padding:22px 14px 38px}.grid{grid-template-columns:1fr;gap:15px}.sectionhead{align-items:flex-start;flex-direction:column}.sortbox{width:100%;justify-content:space-between;min-height:48px}.sortbox select{flex:1;max-width:none}}
+
+/* /// STICKERS PERSONALIZABLES DE CADA ADDON */
+.stickers{display:flex;flex-wrap:wrap;gap:6px;padding:10px 12px 0}
+.sticker{display:inline-flex;align-items:center;gap:4px;padding:5px 9px;border-radius:7px;
+  border:1px solid #ffffff20;background:linear-gradient(110deg,#8b5cf633,#10b98122);
+  color:#e9d5ff;font-size:.72rem;font-weight:850;line-height:1.25}
+.sticker[data-sticker*="Nuevo"],.sticker[data-sticker*="🆕"]{background:#10b98122;border-color:#10b98166;color:#6ee7b7}
+.sticker[data-sticker*="Popular"],.sticker[data-sticker*="🔥"]{background:#f973161c;border-color:#f9731666;color:#fdba74}
+.sticker[data-sticker*="Destacado"],.sticker[data-sticker*="⭐"]{background:#eab3081c;border-color:#eab30866;color:#fde68a}
+.sticker[data-sticker*="Actualizado"],.sticker[data-sticker*="🔄"]{background:#38bdf81c;border-color:#38bdf866;color:#7dd3fc}
+
+.sticker[data-sticker*="MINECRAFT"]{background:#16a34a22;border-color:#22c55e77;color:#86efac}
+.sticker[data-sticker*="GRATIS"]{background:#10b98122;border-color:#10b98177;color:#6ee7b7}
+.sticker[data-sticker*="PREMIUM"],.sticker[data-sticker*="💎"]{background:#a855f722;border-color:#c084fc77;color:#e9d5ff}
+.sticker[data-sticker*="TEXTURAS"]{background:#ec489922;border-color:#f472b677;color:#f9a8d4}
+.sticker[data-sticker*="ADDON"]{background:#6366f122;border-color:#818cf877;color:#c7d2fe}
+.sticker[data-sticker*="MAPA"]{background:#0d948822;border-color:#2dd4bf77;color:#99f6e4}
+
+/* /// STICKERS QUE USAN IMÁGENES SUBIDAS POR EL PROPIETARIO */
+.sticker-image{padding:0;border:0;background:transparent;box-shadow:none;overflow:visible}
+.sticker-img{display:block;width:auto;height:30px;max-width:150px;object-fit:contain}
