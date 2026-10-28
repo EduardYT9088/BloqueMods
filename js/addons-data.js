@@ -21,18 +21,6 @@ en img/stickers/mi-sticker.png. La propiedad stickers sigue funcionando normalme
 const addonsData = [
   {
     id: 1,
-    title: "Actions & Stuff 1.8",
-    description: "Texturas con animaciones espectaculares.",
-    cover_image: "./img/Action.1.8.jpg",
-    version: "1.21.124",
-    download_link: "https://www.mediafire.com/file/nl6gwjvw9gcoork/Actions_Stuff_1.8_%2528resources%2529.mcpack/file",
-    tags: ["Texturas", "Animación"],
-    stickers: ["⭐ Destacado", "🔥 Popular", "💎 Premium"],
-    last_updated: "2025-11-30",
-    file_size: "19.37 MB"
-  }
-  {
-    id: 2,
     title: "$nuevo StickMenuV1",
     description: "Usa un palo para abrir un menú: modos de juego, tiempo, clima, efectos, utilidades y más. Sin desactivar logros. Creditos : Edward Gamer",
     cover_image: "./img/StickMenuV1.png",
