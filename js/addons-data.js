@@ -26,11 +26,11 @@ const addonsData = [
     cover_image: "./img/StickMenuV1.png",
     version: "1.26.60.4",
     download_link: "https://www.mediafire.com/file/1947m3r2uui5rqp/StickMenu_v1.1.mcpack/file",
-    tags: ["📂Addon", "Ilegal 😱", "Sin Desatvar Logros"],
+    tags: ["Addons", "Ilegal 😱", "Sin Desativar Logros"],
     stickers: ["⭐ Destacado", "👑 Nuevo"],
     last_updated: "2026-10-28",
     file_size: "50.52 K"
-}
+},
 {
     id: 2,
     title: "Npc Custom",
@@ -38,7 +38,7 @@ const addonsData = [
     cover_image: "./img/StickMenuV1.png",
     version: "1.26.60.4",
     download_link: "https://www.mediafire.com/file/1947m3r2uui5rqp/StickMenu_v1.1.mcpack/file",
-    tags: ["📂Addon", "Ilegal 😱", "Sin Desatvar Logros"],
+    tags: ["📂Addon", "Ilegal 😱", "Sin Desativar Logros"],
     stickers: ["⭐ Destacado", "👑 Nuevo"],
     last_updated: "2026-10-28",
     file_size: "50.52 K"
