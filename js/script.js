@@ -81,14 +81,19 @@ function getAddonStickers(addon) {
 }
 
 // /// CREAR CADA TARJETA SIN INSERTAR HTML INSEGURO
-function createAddonCard(addon) {
+function createAddonCard(addon, featured = false) {
   const card = document.createElement("article");
-  card.className = "card";
+  card.className = featured ? "card featured" : "card";
+  const visibleTitle = getAddonTitle(addon);
 
+  // Portada + stickers encima
+  const coverWrap = document.createElement("div");
+  coverWrap.className = "cover-wrap";
   const image = document.createElement("img");
   image.className = "cover";
-  image.alt = `Portada de ${addon.title || "addon"}`;
-  image.loading = "lazy";
+  image.alt = `Portada de ${visibleTitle}`;
+  image.loading = featured ? "eager" : "lazy";
+  image.decoding = "async";
   image.src = addon.cover_image || "";
   image.addEventListener("error", () => {
     const fallback = document.createElement("div");
@@ -96,7 +101,7 @@ function createAddonCard(addon) {
     fallback.textContent = "🧱";
     image.replaceWith(fallback);
   }, {once:true});
-  card.appendChild(image);
+  coverWrap.appendChild(image);
 
   // /// MOSTRAR STICKERS MANUALES Y LOS GENERADOS DESDE EL TÍTULO
   const addonStickers = getAddonStickers(addon);
@@ -104,7 +109,7 @@ function createAddonCard(addon) {
     const stickerBox = document.createElement("div");
     stickerBox.className = "stickers";
     addonStickers.forEach(value => {
-      const sticker = document.createElement(value.image ? "span" : "span");
+      const sticker = document.createElement("span");
       sticker.className = value.image ? "sticker sticker-image" : "sticker";
       sticker.dataset.sticker = value.label;
       if (value.image) {
@@ -123,19 +128,22 @@ function createAddonCard(addon) {
       }
       stickerBox.appendChild(sticker);
     });
-    card.appendChild(stickerBox);
+    coverWrap.appendChild(stickerBox);
   }
+  card.appendChild(coverWrap);
 
   const content = document.createElement("div");
   content.className = "content";
 
-  const pill = document.createElement("span");
-  pill.className = "pill";
-  pill.textContent = (addon.tags && addon.tags[0]) ? addon.tags[0].toUpperCase() : "ADDON";
-  content.appendChild(pill);
+  if (featured) {
+    const label = document.createElement("span");
+    label.className = "new-label";
+    label.textContent = "Lo más reciente";
+    content.appendChild(label);
+  }
 
   const title = document.createElement("h3");
-  title.textContent = getAddonTitle(addon);
+  title.textContent = visibleTitle;
   content.appendChild(title);
 
   const description = document.createElement("p");
@@ -154,39 +162,40 @@ function createAddonCard(addon) {
     content.appendChild(tags);
   }
 
-  const meta = document.createElement("div");
-  meta.className = "meta";
-  const version = document.createElement("span");
-  version.textContent = `Versión ${addon.version || "No indicada"}`;
-  const size = document.createElement("span");
-  size.textContent = addon.file_size || "Tamaño no indicado";
-  meta.append(version, size);
-  content.appendChild(meta);
-
-  const date = document.createElement("div");
-  date.className = "meta";
-  date.textContent = `Actualizado: ${formatDate(addon.last_updated)}`;
-  content.appendChild(date);
+  // Versión, tamaño y fecha
+  const facts = document.createElement("dl");
+  facts.className = "facts";
+  [
+    ["Versión", addon.version || "—"],
+    ["Tamaño", addon.file_size || "—"],
+    ["Actualizado", formatDate(addon.last_updated)]
+  ].forEach(([label, value]) => {
+    const item = document.createElement("div");
+    const dt = document.createElement("dt");
+    dt.textContent = label;
+    const dd = document.createElement("dd");
+    dd.textContent = value;
+    item.append(dt, dd);
+    facts.appendChild(item);
+  });
+  content.appendChild(facts);
 
   const button = document.createElement("a");
-  button.className = "btn";
+  button.className = "block-btn download";
   button.textContent = "⬇ Descargar";
   if (addon.download_link && addon.download_link !== "#") {
     button.href = addon.download_link;
     button.target = "_blank";
     button.rel = "noopener noreferrer";
+    button.setAttribute("aria-label", `Descargar ${visibleTitle}`);
   } else {
     button.href = "#";
     button.classList.add("disabled");
     button.setAttribute("aria-disabled", "true");
-    button.title = "Añade el enlace en js/addons-data.js";
+    button.textContent = "Descarga pronto";
   }
   content.appendChild(button);
   card.appendChild(content);
-  card.dataset.search = [
-    addon.title, addon.description, ...(addon.tags || []), addon.version, addon.file_size
-  ].join(" ").toLocaleLowerCase("es");
-  card.dataset.tags = (addon.tags || []).join("|").toLocaleLowerCase("es");
   return card;
 }
 
@@ -222,7 +231,9 @@ function renderAddons() {
 
   list = sortAddons(list);
   grid.replaceChildren();
-  list.forEach(addon => grid.appendChild(createAddonCard(addon)));
+  // El más reciente se destaca solo en la vista normal (sin búsqueda ni filtro)
+  const showFeatured = !query && activeFilter === "todos" && sortSelect.value === "newest";
+  list.forEach((addon, index) => grid.appendChild(createAddonCard(addon, showFeatured && index === 0)));
   resultCount.textContent = `${list.length} ${list.length === 1 ? "publicación" : "publicaciones"}`;
   emptyMessage.hidden = list.length > 0;
 }
@@ -230,8 +241,10 @@ function renderAddons() {
 searchInput.addEventListener("input", renderAddons);
 sortSelect.addEventListener("change", renderAddons);
 filterButtons.forEach(button => button.addEventListener("click", () => {
-  filterButtons.forEach(item => item.classList.remove("active"));
-  button.classList.add("active");
+  filterButtons.forEach(item => {
+    item.classList.toggle("active", item === button);
+    item.setAttribute("aria-pressed", String(item === button));
+  });
   activeFilter = button.dataset.filter;
   renderAddons();
 }));
@@ -241,7 +254,11 @@ resetButton.addEventListener("click", () => {
   searchInput.value = "";
   activeFilter = "todos";
   sortSelect.value = "newest";
-  filterButtons.forEach(item => item.classList.toggle("active", item.dataset.filter === "todos"));
+  filterButtons.forEach(item => {
+    const on = item.dataset.filter === "todos";
+    item.classList.toggle("active", on);
+    item.setAttribute("aria-pressed", String(on));
+  });
   renderAddons();
 });
 

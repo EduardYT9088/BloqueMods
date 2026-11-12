@@ -23,7 +23,7 @@ const addonsData = [
     id: 1,
     title: "StickMenuV1",
     description: "Usa un palo para abrir un menú: modos de juego, tiempo, clima, efectos, utilidades y más. Sin desactivar logros. Creditos : Edward Gamer",
-    cover_image: "./img/StickMenuV1.png",
+    cover_image: "./img/StickMenuV1.jpg",
     version: "1.26.60.4",
     download_link: "https://www.mediafire.com/file/1947m3r2uui5rqp/StickMenu_v1.1.mcpack/file",
     tags: ["Addon", "Herramientas", "Ilegal 😱", "Sin Desativar Logros"],

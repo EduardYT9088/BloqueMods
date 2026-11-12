@@ -1,69 +1,230 @@
-/* /// COLORES GENERALES */
-:root{--bg:#0f172a;--panel:#1e293b;--panel2:#263449;--purple:#8b5cf6;--purple2:#7c3aed;--green:#10b981;--text:#f8fafc;--muted:#aab8ca;--border:#334155;--radius:18px}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{margin:0;background:radial-gradient(ellipse at top right,#30235a55,transparent 35%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
-a{color:inherit;text-decoration:none}button,input,select{font:inherit}button{cursor:pointer}
+/* =====================================================
+   /// BLOQUEMODS — ESTILOS
+   Colores tomados del logo: noche estrellada + bloques
+   violeta (amatista) y cian (diamante).
+   ===================================================== */
+:root{
+  --noche:#0e0b22;      /* fondo de la página */
+  --cielo:#120e2e;      /* fondo de la portada */
+  --obsidiana:#1a1638;  /* tarjetas y paneles */
+  --pizarra:#2a2552;    /* bordes y ranuras */
+  --amatista:#8a5cff;   /* color principal */
+  --diamante:#3fe0d0;   /* botón de descarga */
+  --texto:#ecebff;
+  --suave:#a9a5cc;
+  --pixel:"Pixelify Sans","Rubik",system-ui,sans-serif;
+  --cuerpo:"Rubik",system-ui,-apple-system,"Segoe UI",sans-serif;
+  /* Relieve de bloque: luz arriba, sombra abajo */
+  --relieve:inset 0 3px 0 #ffffff40, inset 0 -4px 0 #00000059;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--noche);color:var(--texto);font-family:var(--cuerpo);font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+img{max-width:100%}
+:focus-visible{outline:3px solid var(--diamante);outline-offset:3px}
 .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-/* /// MENÚ SUPERIOR Y DESPLEGABLE */
-.navbar{min-height:68px;padding:10px max(16px,calc((100% - 1080px)/2));display:flex;align-items:center;justify-content:space-between;gap:15px;background:#1e293bf2;border-bottom:1px solid #ffffff12;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
-.brand{font-weight:950;font-size:clamp(1.2rem,4vw,1.8rem);letter-spacing:-.7px;background:linear-gradient(90deg,#a78bfa,#34d399);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
-.hamburger{width:48px;height:46px;border:1px solid var(--border);border-radius:14px;background:#111c30;color:white;font-size:26px}
-.menu{display:none;position:absolute;right:max(16px,calc((100% - 1080px)/2));top:calc(100% + 5px);width:min(270px,calc(100vw - 32px));padding:10px;background:var(--panel);border:1px solid var(--border);border-radius:15px;box-shadow:0 18px 45px #0008}
-.menu.open{display:block}.menu-title{padding:10px 12px;color:#c4b5fd;font-weight:800;border-bottom:1px solid var(--border);margin-bottom:5px}
-.menu a{display:block;padding:12px;border-radius:10px;color:var(--muted)}.menu a:hover{background:var(--panel2);color:white}
-/* /// PORTADA Y CRÉDITOS */
-.hero{padding:38px 16px 31px;text-align:center;background:linear-gradient(135deg,#251d43,#172b3a 65%,#12352d);border-bottom:1px solid #ffffff12}
-.logo{display:inline-grid;place-items:center;width:57px;height:57px;border-radius:16px;background:linear-gradient(135deg,var(--purple),var(--green));color:white;font-weight:950;font-size:24px;box-shadow:0 8px 28px #8b5cf633}
-.hero h1{font-size:clamp(30px,6vw,43px);line-height:1.15;margin:12px 0 7px;letter-spacing:-1px}.hero h1 span{background:linear-gradient(90deg,#c4b5fd,#6ee7b7);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p{margin:0 auto;max-width:650px;color:#cbd5e1}.badge{display:inline-block;margin-top:17px;padding:5px 11px;border:1px solid #8b5cf655;background:#8b5cf61b;border-radius:999px;color:#ddd6fe;font-size:.8rem;font-weight:750}
-.credits{margin-top:12px!important;font-size:.9rem;color:var(--muted)}.credits strong,footer strong{color:#6ee7b7}
-/* /// BUSCADOR Y ORDENAMIENTO */
-main{width:min(1080px,100%);margin:auto;padding:25px 16px 48px}.catalog-tools{display:flex;gap:12px;align-items:stretch;flex-wrap:wrap}
-.searchbox{flex:1;min-width:220px}.searchbox input{width:100%;min-height:49px;padding:13px 15px;border:1px solid var(--border);border-radius:13px;background:#111c30;color:white;outline:none}
-.searchbox input:focus{border-color:var(--purple);box-shadow:0 0 0 3px #8b5cf622}.searchbox input::placeholder{color:#8492a7}
-.sortbox{display:flex;align-items:center;gap:9px;padding:0 12px;border:1px solid var(--border);border-radius:13px;background:var(--panel);color:var(--muted)}
-.sortbox select{max-width:170px;border:0;outline:none;background:transparent;color:white;padding:12px 0}.sortbox option{background:var(--panel)}
-/* /// FILTROS */
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin:17px 0 25px}.filter{border:1px solid var(--border);border-radius:999px;background:var(--panel);color:var(--muted);padding:9px 16px}
-.filter.active,.filter:hover{background:var(--purple);border-color:var(--purple);color:white;font-weight:750}
-/* /// TÍTULO DEL CATÁLOGO */
-.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:10px;margin:12px 0 18px}.sectionhead h2{margin:0;font-size:1.6rem}.sectionhead p{margin:4px 0 0;color:var(--muted)}.count{color:#c4b5fd;font-size:.9rem}
-/* /// TARJETAS Y PORTADAS */
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.card{min-width:0;overflow:hidden;background:linear-gradient(180deg,#1e293b,#172338);border:1px solid var(--border);border-radius:var(--radius);transition:transform .2s,border-color .2s,box-shadow .2s}
-.card:hover{transform:translateY(-4px);border-color:var(--purple);box-shadow:0 12px 32px #0003}.cover{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:linear-gradient(135deg,#234a42,#39265e)}
-.cover-fallback{display:grid;place-items:center;width:100%;aspect-ratio:16/9;font-size:54px;background:radial-gradient(circle at 25% 20%,#10b98155,transparent 45%),linear-gradient(135deg,#234a42,#39265e)}
-.content{padding:16px}.pill{display:inline-block;padding:5px 9px;margin-bottom:10px;border-radius:7px;background:#8b5cf622;color:#c4b5fd;font-size:.73rem;font-weight:800}
-.content h3{font-size:1.08rem;line-height:1.35;margin:0 0 8px}.content p{color:var(--muted);font-size:.9rem;line-height:1.55;margin:0;overflow-wrap:anywhere}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}.tag{padding:3px 8px;border-radius:999px;background:#0f172a;border:1px solid var(--border);color:#cbd5e1;font-size:.72rem}
-.meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:7px;color:#a5b4c7;font-size:.78rem;margin:15px 0}.btn{display:flex;align-items:center;justify-content:center;gap:7px;padding:12px;border-radius:11px;background:linear-gradient(90deg,var(--purple),var(--purple2));color:white;font-weight:800;text-align:center}
-.btn:hover{filter:brightness(1.15)}.btn.disabled{opacity:.55;pointer-events:none}
-/* /// RESULTADOS VACÍOS Y GUÍA */
-.empty{text-align:center;color:var(--muted);padding:32px 16px;border:1px dashed var(--border);border-radius:14px}.empty[hidden]{display:none}.empty-icon{font-size:42px}
-.reset-button{margin-top:8px;padding:10px 15px;border:0;border-radius:10px;background:var(--purple);color:white;font-weight:750}
-.note{margin-top:27px;padding:16px 18px;border:1px solid var(--border);border-radius:13px;background:#1e293b80;color:var(--muted);font-size:.9rem}.note strong{color:#ddd6fe}.note code{color:#6ee7b7;overflow-wrap:anywhere}
-footer{text-align:center;padding:24px 15px;border-top:1px solid #ffffff12;color:#8796aa;font-size:.85rem}footer p{margin:5px 0}footer a{color:#c4b5fd}
-/* /// ADAPTACIÓN A TABLETAS Y CELULARES */
-@media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:600px){.navbar{min-height:62px}.hero{padding:29px 15px}main{padding:22px 14px 38px}.grid{grid-template-columns:1fr;gap:15px}.sectionhead{align-items:flex-start;flex-direction:column}.sortbox{width:100%;justify-content:space-between;min-height:48px}.sortbox select{flex:1;max-width:none}}
+.skip{position:absolute;left:12px;top:-60px;z-index:200;padding:10px 14px;background:var(--diamante);color:var(--noche);font-weight:700;border-radius:4px}
+.skip:focus{top:12px}
 
-/* /// STICKERS PERSONALIZABLES DE CADA ADDON */
-.stickers{display:flex;flex-wrap:wrap;gap:6px;padding:10px 12px 0}
-.sticker{display:inline-flex;align-items:center;gap:4px;padding:5px 9px;border-radius:7px;
-  border:1px solid #ffffff20;background:linear-gradient(110deg,#8b5cf633,#10b98122);
-  color:#e9d5ff;font-size:.72rem;font-weight:850;line-height:1.25}
-.sticker[data-sticker*="Nuevo"],.sticker[data-sticker*="🆕"]{background:#10b98122;border-color:#10b98166;color:#6ee7b7}
-.sticker[data-sticker*="Popular"],.sticker[data-sticker*="🔥"]{background:#f973161c;border-color:#f9731666;color:#fdba74}
-.sticker[data-sticker*="Destacado"],.sticker[data-sticker*="⭐"]{background:#eab3081c;border-color:#eab30866;color:#fde68a}
-.sticker[data-sticker*="Actualizado"],.sticker[data-sticker*="🔄"]{background:#38bdf81c;border-color:#38bdf866;color:#7dd3fc}
+/* =====================================================
+   /// MENÚ SUPERIOR
+   ===================================================== */
+.navbar{position:sticky;top:0;z-index:100;min-height:64px;padding:10px max(16px,calc((100% - 1100px)/2));display:flex;align-items:center;justify-content:space-between;gap:16px;background:#120e2ee6;border-bottom:2px solid var(--pizarra);backdrop-filter:blur(10px)}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--pixel);font-weight:700;font-size:1.4rem;letter-spacing:.5px}
+.brand img{width:36px;height:36px;border-radius:8px}
+.hamburger{display:grid;place-content:center;gap:5px;width:46px;height:44px;border:2px solid var(--pizarra);border-radius:6px;background:var(--obsidiana);box-shadow:var(--relieve)}
+.hamburger span{display:block;width:20px;height:3px;background:var(--texto)}
+.hamburger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu{display:none;position:absolute;right:max(16px,calc((100% - 1100px)/2));top:calc(100% + 6px);width:min(260px,calc(100vw - 32px));padding:8px;background:var(--obsidiana);border:2px solid var(--pizarra);border-radius:8px;box-shadow:0 18px 40px #00000080}
+.menu.open{display:block}
+.menu a{display:block;padding:12px;border-radius:4px;color:var(--suave)}
+.menu a:hover{background:var(--pizarra);color:var(--texto)}
 
-.sticker[data-sticker*="MINECRAFT"]{background:#16a34a22;border-color:#22c55e77;color:#86efac}
-.sticker[data-sticker*="GRATIS"]{background:#10b98122;border-color:#10b98177;color:#6ee7b7}
-.sticker[data-sticker*="PREMIUM"],.sticker[data-sticker*="💎"]{background:#a855f722;border-color:#c084fc77;color:#e9d5ff}
-.sticker[data-sticker*="TEXTURAS"]{background:#ec489922;border-color:#f472b677;color:#f9a8d4}
-.sticker[data-sticker*="ADDON"]{background:#6366f122;border-color:#818cf877;color:#c7d2fe}
-.sticker[data-sticker*="MAPA"]{background:#0d948822;border-color:#2dd4bf77;color:#99f6e4}
+/* En pantallas grandes el menú se muestra en línea */
+@media(min-width:900px){
+  .hamburger{display:none}
+  .menu{display:flex;position:static;width:auto;padding:0;gap:2px;background:none;border:0;box-shadow:none}
+  .menu a{padding:8px 12px;font-size:.92rem}
+  .menu a:first-child{display:none}
+}
 
-/* /// STICKERS QUE USAN IMÁGENES SUBIDAS POR EL PROPIETARIO */
-.sticker-image{padding:0;border:0;background:transparent;box-shadow:none;overflow:visible}
+/* =====================================================
+   /// PORTADA CON TERRENO DE BLOQUES
+   ===================================================== */
+.hero{position:relative;overflow:hidden;padding:44px 16px 0;
+  /* estrellas pixeladas como en el logo */
+  background:
+    radial-gradient(2px 2px at 12% 22%,#ffffffb0 50%,transparent 51%),
+    radial-gradient(2px 2px at 78% 14%,#ffffff90 50%,transparent 51%),
+    radial-gradient(2px 2px at 42% 8%,#c9b8ff 50%,transparent 51%),
+    radial-gradient(2px 2px at 88% 52%,#9ff3ea 50%,transparent 51%),
+    radial-gradient(2px 2px at 6% 64%,#ffffff70 50%,transparent 51%),
+    radial-gradient(2px 2px at 60% 40%,#ffffff60 50%,transparent 51%),
+    var(--cielo)}
+.hero-inner{width:min(1100px,100%);margin:auto;display:flex;align-items:center;gap:28px;padding-bottom:28px}
+.hero-logo{flex:none;width:128px;height:128px;border-radius:24px;box-shadow:0 0 0 2px var(--pizarra),0 16px 40px #8a5cff40}
+.hero h1{margin:0;font-family:var(--pixel);font-weight:700;font-size:clamp(2.6rem,9vw,4.6rem);line-height:1;letter-spacing:1px;
+  /* sombra en escalones, como texto de Minecraft */
+  text-shadow:4px 4px 0 #5b3fc4,8px 8px 0 #2a2552}
+.hero-text>p{margin:16px 0 0;max-width:34em;color:#cfcbef;font-size:1.08rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.credits{font-size:.9rem;color:var(--suave)!important}
+.credits strong{color:var(--diamante)}
+.terrain{height:96px;margin:0 -16px;background:url("../img/terrain.svg") left bottom/960px 96px repeat-x;image-rendering:pixelated;animation:rise .9s steps(6) .15s both}
+@keyframes rise{from{transform:translateY(100%)}to{transform:none}}
+
+/* =====================================================
+   /// BOTONES CON RELIEVE DE BLOQUE
+   ===================================================== */
+.block-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:10px 20px;border:2px solid #00000066;border-radius:4px;background:var(--pizarra);color:var(--texto);font-weight:700;box-shadow:var(--relieve);transition:transform .08s}
+.block-btn:hover{filter:brightness(1.12)}
+.block-btn:active{transform:translateY(2px);box-shadow:inset 0 -1px 0 #00000059,inset 0 2px 0 #ffffff26}
+.block-btn.primary{background:var(--amatista);color:#fff}
+.block-btn.download{width:100%;background:var(--diamante);color:#08261f;font-size:1.05rem}
+.block-btn.disabled{opacity:.5;pointer-events:none}
+
+/* =====================================================
+   /// BUSCADOR Y ORDENAMIENTO
+   ===================================================== */
+main{width:min(1100px,100%);margin:auto;padding:12px 16px 56px}
+.catalog-tools{display:flex;gap:12px;flex-wrap:wrap}
+.searchbox{flex:1;min-width:220px;position:relative}
+.searchbox::before{content:"";position:absolute;left:16px;top:50%;width:12px;height:12px;border:3px solid var(--suave);border-radius:50%;transform:translateY(-60%)}
+.searchbox::after{content:"";position:absolute;left:30px;top:56%;width:3px;height:8px;background:var(--suave);transform:rotate(-45deg)}
+.searchbox input{width:100%;min-height:50px;padding:12px 16px 12px 46px;border:2px solid var(--pizarra);border-radius:6px;background:#0a0819;outline:none;box-shadow:inset 0 3px 0 #00000059}
+.searchbox input:focus{border-color:var(--amatista)}
+.searchbox input::placeholder{color:#7d79a3}
+.sortbox{display:flex;align-items:center;gap:10px;padding:0 14px;border:2px solid var(--pizarra);border-radius:6px;background:var(--obsidiana);color:var(--suave);font-size:.9rem}
+.sortbox select{border:0;outline:none;background:transparent;color:var(--texto);padding:12px 0;font-size:1rem}
+.sortbox option{background:var(--obsidiana)}
+
+/* =====================================================
+   /// FILTROS ESTILO HOTBAR (barra de objetos)
+   ===================================================== */
+.filters{display:flex;gap:4px;margin:18px 0 8px;padding:4px;width:max-content;max-width:100%;overflow-x:auto;background:#00000055;border:2px solid var(--pizarra);border-radius:6px;scrollbar-width:none}
+.filters::-webkit-scrollbar{display:none}
+.filter{flex:none;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:84px;padding:8px 10px 6px;border:2px solid transparent;border-radius:4px;background:var(--obsidiana);color:var(--suave);font-size:.78rem;font-weight:500;box-shadow:var(--relieve)}
+.slot-icon{font-size:1.35rem;line-height:1.2}
+.filter:hover{color:var(--texto)}
+/* ranura seleccionada: marco blanco como en el juego */
+.filter.active{border-color:#fff;color:#fff;background:var(--pizarra);box-shadow:0 0 0 2px #00000099,var(--relieve)}
+
+/* =====================================================
+   /// CATÁLOGO
+   ===================================================== */
+.sectionhead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:28px 0 16px}
+.sectionhead h2,.howto h2{margin:0;font-family:var(--pixel);font-weight:700;font-size:clamp(1.6rem,4vw,2rem);letter-spacing:.5px}
+.count{color:var(--suave);font-size:.9rem}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+/* Tarjeta */
+.card{min-width:0;display:flex;flex-direction:column;overflow:hidden;background:var(--obsidiana);border:2px solid var(--pizarra);border-radius:8px}
+.card:hover{border-color:#4a3f8f}
+.cover-wrap{position:relative;background:var(--pizarra)}
+.cover,.cover-fallback{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.cover-fallback{display:grid;place-items:center;font-size:54px;background:var(--pizarra)}
+.content{flex:1;display:flex;flex-direction:column;padding:16px 18px 18px}
+.content h3{margin:0 0 8px;font-family:var(--pixel);font-weight:700;font-size:1.45rem;line-height:1.15;letter-spacing:.3px}
+.content p{margin:0;color:var(--suave);font-size:.95rem;overflow-wrap:anywhere}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tag{padding:3px 9px;border-radius:4px;background:#0a0819;border:1px solid var(--pizarra);color:#cfcbef;font-size:.78rem}
+
+/* Datos: versión, tamaño y fecha */
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;margin:16px 0;padding:0}
+.facts div{padding:8px 10px;background:#0a0819;border-radius:4px;min-width:0}
+.facts dt{color:#7d79a3;font-size:.72rem}
+.facts dd{margin:0;font-weight:500;font-size:.86rem;overflow-wrap:anywhere}
+.content .block-btn{margin-top:auto}
+
+/* Tarjeta destacada: el addon más reciente ocupa todo el ancho */
+.card.featured{grid-column:1/-1;flex-direction:row}
+.card.featured .cover-wrap{flex:0 0 58%}
+.card.featured .cover{height:100%;aspect-ratio:auto;min-height:100%}
+.card.featured .content{padding:24px 26px}
+.card.featured h3{font-size:clamp(1.8rem,3.4vw,2.4rem)}
+.card.featured .new-label{align-self:flex-start;margin-bottom:10px;padding:3px 10px;border-radius:4px;background:#3fe0d01f;color:var(--diamante);font-size:.8rem;font-weight:700}
+
+/* =====================================================
+   /// STICKERS (sobre la portada)
+   ===================================================== */
+.stickers{position:absolute;left:10px;top:10px;right:10px;display:flex;flex-wrap:wrap;gap:6px;pointer-events:none}
+.sticker{display:inline-flex;align-items:center;gap:4px;padding:4px 9px;border-radius:4px;border:2px solid #ffffff30;background:#120e2ee0;color:#e9e3ff;font-size:.76rem;font-weight:700;line-height:1.25;backdrop-filter:blur(4px)}
+.sticker[data-sticker*="Nuevo"],.sticker[data-sticker*="🆕"],.sticker[data-sticker*="NUEVO"]{border-color:#3fe0d0aa;color:#9ff3ea}
+.sticker[data-sticker*="Popular"],.sticker[data-sticker*="🔥"],.sticker[data-sticker*="POPULAR"]{border-color:#f97316aa;color:#fdba74}
+.sticker[data-sticker*="Destacado"],.sticker[data-sticker*="⭐"],.sticker[data-sticker*="DESTACADO"]{border-color:#eab308aa;color:#fde68a}
+.sticker[data-sticker*="Actualizado"],.sticker[data-sticker*="🔄"],.sticker[data-sticker*="ACTUALIZADO"]{border-color:#38bdf8aa;color:#7dd3fc}
+.sticker[data-sticker*="MINECRAFT"]{border-color:#22c55eaa;color:#86efac}
+.sticker[data-sticker*="GRATIS"]{border-color:#10b981aa;color:#6ee7b7}
+.sticker[data-sticker*="PREMIUM"],.sticker[data-sticker*="💎"]{border-color:#c084fcaa;color:#e9d5ff}
+.sticker[data-sticker*="TEXTURAS"]{border-color:#f472b6aa;color:#f9a8d4}
+.sticker[data-sticker*="ADDON"]{border-color:#818cf8aa;color:#c7d2fe}
+.sticker[data-sticker*="MAPA"]{border-color:#2dd4bfaa;color:#99f6e4}
+/* Stickers con imagen subida por el propietario */
+.sticker-image{padding:0;border:0;background:transparent;backdrop-filter:none}
 .sticker-img{display:block;width:auto;height:30px;max-width:150px;object-fit:contain}
 
+/* =====================================================
+   /// SIN RESULTADOS
+   ===================================================== */
+.empty{text-align:center;color:var(--suave);padding:36px 16px;border:2px dashed var(--pizarra);border-radius:8px}
+.empty[hidden]{display:none}
+.empty-icon{font-size:42px}
+.empty h3{margin:6px 0 4px;color:var(--texto)}
+.empty p{margin:0 0 16px}
+
+/* =====================================================
+   /// CÓMO INSTALAR (3 pasos)
+   ===================================================== */
+.howto{margin-top:56px}
+.steps{list-style:none;counter-reset:paso;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.steps li{counter-increment:paso;position:relative;padding:18px 18px 18px 72px;background:var(--obsidiana);border:2px solid var(--pizarra);border-radius:8px}
+.steps li::before{content:counter(paso);position:absolute;left:16px;top:18px;display:grid;place-items:center;width:40px;height:40px;border-radius:4px;background:var(--amatista);color:#fff;font-family:var(--pixel);font-weight:700;font-size:1.4rem;box-shadow:var(--relieve)}
+.steps h3{margin:0 0 4px;font-size:1.02rem}
+.steps p{margin:0;color:var(--suave);font-size:.92rem}
+.steps em{font-style:normal;color:var(--texto)}
+.steps code{color:var(--diamante);font-size:.88em}
+
+/* =====================================================
+   /// PIE DE PÁGINA
+   ===================================================== */
+footer{text-align:center;padding:28px 16px 36px;border-top:2px solid var(--pizarra);color:var(--suave);font-size:.88rem}
+footer p{margin:6px 0}
+footer strong{color:var(--diamante)}
+.footer-links{display:flex;justify-content:center;flex-wrap:wrap;gap:18px}
+.footer-links a{color:var(--texto);text-decoration:underline;text-decoration-color:var(--pizarra);text-underline-offset:4px}
+.disclaimer{color:#7d79a3;font-size:.8rem}
+
+/* =====================================================
+   /// TABLETAS Y CELULARES
+   ===================================================== */
+@media(max-width:900px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:1fr}
+  .card.featured{flex-direction:column}
+  .card.featured .cover-wrap{flex:none}
+  .card.featured .cover{height:auto;min-height:0;aspect-ratio:16/9}
+}
+@media(max-width:600px){
+  .hero{padding-top:30px}
+  .hero-inner{flex-direction:column;align-items:flex-start;gap:18px;padding-bottom:20px}
+  .hero-logo{width:84px;height:84px;border-radius:18px}
+  .hero-actions .block-btn{flex:1}
+  .terrain{height:64px;background-size:640px 64px}
+  main{padding:8px 14px 44px}
+  .grid{grid-template-columns:1fr;gap:16px}
+  .sortbox{width:100%;justify-content:space-between;min-height:50px}
+  .sortbox select{flex:1;text-align:right}
+  .filters{width:100%}
+  .filter{min-width:76px}
+  .card.featured .content{padding:18px}
+}
+
+/* Respeta a quien desactiva animaciones */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .terrain{animation:none}
+  .block-btn{transition:none}
+}

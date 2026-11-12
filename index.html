@@ -4,44 +4,74 @@
   <!-- /// CONFIGURACIÓN GENERAL -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0f172a">
-  <meta name="description" content="BloqueMods: addons, texturas y recursos para Minecraft Bedrock.">
+  <meta name="theme-color" content="#120e2e">
+  <meta name="description" content="BloqueMods: addons, texturas y mapas para Minecraft Bedrock, creados por Eduard Gamer Addons.">
   <title>BloqueMods | Addons para Minecraft Bedrock</title>
+
+  <!-- /// VISTA PREVIA AL COMPARTIR EL ENLACE (WhatsApp, Discord...) -->
+  <meta property="og:title" content="BloqueMods">
+  <meta property="og:description" content="Addons, texturas y mapas para Minecraft Bedrock.">
+  <meta property="og:image" content="img/logo-bm-256.png">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" type="image/png" href="img/favicon.png">
+
+  <!-- /// FUENTES: Pixelify Sans (títulos) + Rubik (texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Rubik:wght@400;500;700&display=swap">
+
   <!-- /// ARCHIVO DE ESTILOS -->
-  <link rel="stylesheet" href="./css/style.css?v=2">
+  <link rel="stylesheet" href="./css/style.css?v=3">
 </head>
 <body>
+  <a class="skip" href="#catalogo">Saltar al catálogo</a>
+
   <!-- /// MENÚ PRINCIPAL -->
   <nav class="navbar">
-    <a class="brand" href="./">◆ BloqueMods</a>
-    <button class="hamburger" id="menuButton" type="button" aria-expanded="false" aria-controls="menu">☰</button>
+    <a class="brand" href="./">
+      <img src="img/logo-bm-256.png" alt="" width="36" height="36">
+      <span>BloqueMods</span>
+    </a>
+    <button class="hamburger" id="menuButton" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
     <div class="menu" id="menu">
-      <div class="menu-title">Menú principal</div>
       <a href="./">🏠 Inicio</a>
       <a href="#catalogo">🧱 Explorar addons</a>
-      <a href="#como-agregar">❔ Cómo agregar addons</a>
+      <a href="#como-agregar">❔ Cómo instalar</a>
       <a href="https://youtube.com/@edward_gamer_addons?si=EJ8PD0a1kC8iDQnB" target="_blank" rel="noopener noreferrer">▶️ YouTube</a>
       <a href="https://discord.gg/uhgHaGa4Bv" target="_blank" rel="noopener noreferrer">💬 Discord</a>
       <a href="LICENSE.txt">📄 Licencia y créditos</a>
     </div>
   </nav>
 
-  <!-- /// PORTADA Y CRÉDITOS -->
+  <!-- /// PORTADA -->
   <header class="hero">
-    <img src="img/logo-bm.png" alt="BM Logo" class="logo-img" style="width:110px; height:110px; border-radius:26px; object-fit:cover;">
-    <h1>Bienvenido a <span>BloqueMods</span></h1>
-    <p>Descubre addons, texturas y recursos para personalizar tu experiencia en Minecraft Bedrock.</p>
-    <div class="badge">✦ Contenido para Minecraft Bedrock</div>
-    <p class="credits">Creado por <strong>Eduard Gamer Addons</strong></p>
+    <div class="hero-inner">
+      <img src="img/logo-bm-256.png" alt="Logo de BloqueMods" class="hero-logo" width="128" height="128">
+      <div class="hero-text">
+        <h1>BloqueMods</h1>
+        <p>Addons, texturas y mapas para Minecraft Bedrock. Descarga gratis y juega en tu mundo o servidor.</p>
+        <div class="hero-actions">
+          <a class="block-btn primary" href="#catalogo">Ver addons</a>
+          <a class="block-btn" href="https://youtube.com/@edward_gamer_addons?si=EJ8PD0a1kC8iDQnB" target="_blank" rel="noopener noreferrer">▶ Canal de YouTube</a>
+        </div>
+        <p class="credits">Creado por <strong>Eduard Gamer Addons</strong></p>
+      </div>
+    </div>
+    <!-- Terreno de bloques (img/terrain.svg) -->
+    <div class="terrain" aria-hidden="true"></div>
   </header>
 
   <main>
     <!-- /// BUSCADOR Y ORDENAMIENTO -->
-    <section class="catalog-tools">
-      <label class="searchbox"><span class="visually-hidden">Buscar addons</span>
-        <input id="searchInput" type="search" placeholder="🔎 Buscar por nombre, descripción o etiqueta...">
+    <section class="catalog-tools" aria-label="Buscar y ordenar">
+      <label class="searchbox">
+        <span class="visually-hidden">Buscar addons</span>
+        <input id="searchInput" type="search" placeholder="Buscar addon, textura o etiqueta" autocomplete="off">
       </label>
-      <label class="sortbox"><span>Ordenar:</span>
+      <label class="sortbox"><span>Ordenar</span>
         <select id="sortSelect">
           <option value="newest">Más recientes</option>
           <option value="oldest">Más antiguos</option>
@@ -51,47 +81,64 @@
       </label>
     </section>
 
-    <!-- /// FILTROS: LAS ETIQUETAS DEBEN COINCIDIR CON addons-data.js -->
-    <div class="filters" id="filters" aria-label="Filtrar por categoría">
-      <button class="filter active" data-filter="todos" type="button">Todos</button>
-      <button class="filter" data-filter="Texturas" type="button">Texturas</button>
-      <button class="filter" data-filter="Addon" type="button">Addons</button>
-      <button class="filter" data-filter="Mapas" type="button">Mapas</button>
-      <button class="filter" data-filter="Animación" type="button">Animación</button>
-      <button class="filter" data-filter="Herramientas" type="button">Herramientas</button>
+    <!-- /// FILTROS (barra estilo hotbar): LAS ETIQUETAS DEBEN COINCIDIR CON addons-data.js -->
+    <div class="filters" id="filters" role="toolbar" aria-label="Filtrar por categoría">
+      <button class="filter active" data-filter="todos" type="button" aria-pressed="true"><span class="slot-icon">🧰</span>Todos</button>
+      <button class="filter" data-filter="Texturas" type="button" aria-pressed="false"><span class="slot-icon">🎨</span>Texturas</button>
+      <button class="filter" data-filter="Addon" type="button" aria-pressed="false"><span class="slot-icon">🧩</span>Addons</button>
+      <button class="filter" data-filter="Mapas" type="button" aria-pressed="false"><span class="slot-icon">🗺️</span>Mapas</button>
+      <button class="filter" data-filter="Animación" type="button" aria-pressed="false"><span class="slot-icon">🎬</span>Animación</button>
+      <button class="filter" data-filter="Herramientas" type="button" aria-pressed="false"><span class="slot-icon">⛏️</span>Herramientas</button>
     </div>
 
     <!-- /// AQUÍ JAVASCRIPT INSERTA LAS TARJETAS -->
     <section id="catalogo">
       <div class="sectionhead">
-        <div><h2>Explora el catálogo</h2><p>Encuentra algo nuevo para tu mundo.</p></div>
-        <span class="count" id="resultCount" aria-live="polite">Cargando...</span>
+        <h2>Catálogo</h2>
+        <span class="count" id="resultCount" aria-live="polite">Cargando…</span>
       </div>
       <div class="grid" id="addonsGrid"></div>
       <div class="empty" id="emptyMessage" hidden>
-        <div class="empty-icon">🔎</div><h3>No se encontraron publicaciones</h3>
-        <p>Prueba otra búsqueda o categoría.</p>
-        <button class="reset-button" id="resetButton" type="button">Limpiar filtros</button>
+        <div class="empty-icon" aria-hidden="true">🔎</div>
+        <h3>Nada coincide con tu búsqueda</h3>
+        <p>Prueba con otra palabra o muestra todas las categorías.</p>
+        <button class="block-btn primary" id="resetButton" type="button">Mostrar todo</button>
       </div>
     </section>
 
-    <!-- /// GUÍA PARA AÑADIR ADDONS -->
-    <aside class="note" id="como-agregar">
-      <strong>¿Cómo agregar addons?</strong><br>
-      1. Descargar el addon abrilo en el Minecraft Bedrock Umtima Versión<br>
-      2. Activar el addon En el Mundo O Servidor Si nesecitan experimentos<br>
-      3. Activar los Experimento API Sino no Lo Actives <br>
-    </aside>
+    <!-- /// GUÍA PARA INSTALAR ADDONS -->
+    <section class="howto" id="como-agregar">
+      <h2>Cómo instalar un addon</h2>
+      <ol class="steps">
+        <li>
+          <h3>Descarga y abre</h3>
+          <p>Toca <em>Descargar</em> y abre el archivo <code>.mcpack</code> o <code>.mcaddon</code>. Se importa solo en Minecraft Bedrock (usa la última versión).</p>
+        </li>
+        <li>
+          <h3>Actívalo en tu mundo</h3>
+          <p>Edita el mundo o servidor, entra en <em>Paquetes de comportamiento</em> y <em>Paquetes de recursos</em> y activa el addon.</p>
+        </li>
+        <li>
+          <h3>Experimentos, solo si los pide</h3>
+          <p>Si la descripción del addon lo indica, activa <em>API beta</em> en Experimentos. Si no, déjalos apagados.</p>
+        </li>
+      </ol>
+    </section>
   </main>
 
   <!-- /// CRÉDITOS -->
   <footer>
-    <p>© <span id="year"></span> BloqueMods · Créditos: <strong>Eduard Gamer Addons</strong></p>
-    <p><a href="LICENSE.txt">Licencia y créditos</a> · Sitio independiente de la comunidad.</p>
+    <p>© <span id="year"></span> BloqueMods · Creado por <strong>Eduard Gamer Addons</strong></p>
+    <p class="footer-links">
+      <a href="https://youtube.com/@edward_gamer_addons?si=EJ8PD0a1kC8iDQnB" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="https://discord.gg/uhgHaGa4Bv" target="_blank" rel="noopener noreferrer">Discord</a>
+      <a href="LICENSE.txt">Licencia y créditos</a>
+    </p>
+    <p class="disclaimer">Sitio independiente de la comunidad. No afiliado a Mojang ni Microsoft.</p>
   </footer>
 
   <!-- /// CARGAR PRIMERO LOS DATOS, DESPUÉS EL SCRIPT -->
-  <script src="js/addons-data.js"></script>
-  <script src="js/script.js"></script>
+  <script src="js/addons-data.js?v=3"></script>
+  <script src="js/script.js?v=3"></script>
 </body>
 </html>
