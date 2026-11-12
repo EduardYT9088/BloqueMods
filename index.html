@@ -22,13 +22,13 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Rubik:wght@400;500;700&display=swap">
 
   <!-- /// ARCHIVO DE ESTILOS -->
-  <link rel="stylesheet" href="./css/style.css?v=3">
+  <link rel="stylesheet" href="./css/style.css?v=4">
 </head>
 <body>
   <a class="skip" href="#catalogo">Saltar al catálogo</a>
 
   <!-- /// MENÚ PRINCIPAL -->
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Principal">
     <a class="brand" href="./">
       <img src="img/logo-bm-256.png" alt="" width="36" height="36">
       <span>BloqueMods</span>
@@ -37,17 +37,27 @@
       <span></span><span></span><span></span>
     </button>
     <div class="menu" id="menu">
-      <a href="./">🏠 Inicio</a>
-      <a href="#catalogo">🧱 Explorar addons</a>
-      <a href="#como-agregar">❔ Cómo instalar</a>
-      <a href="https://youtube.com/@edward_gamer_addons?si=EJ8PD0a1kC8iDQnB" target="_blank" rel="noopener noreferrer">▶️ YouTube</a>
-      <a href="https://discord.gg/uhgHaGa4Bv" target="_blank" rel="noopener noreferrer">💬 Discord</a>
-      <a href="LICENSE.txt">📄 Licencia y créditos</a>
+      <div class="menu-head">
+        <span>Menú</span>
+        <button class="menu-close" id="menuClose" type="button" aria-label="Cerrar menú">✕</button>
+      </div>
+      <div class="menu-links">
+        <a class="menu-item" href="./#inicio" data-section="inicio"><span class="slot" aria-hidden="true">🏠</span><span>Inicio</span></a>
+        <a class="menu-item" href="./#catalogo" data-section="catalogo"><span class="slot" aria-hidden="true">🧱</span><span>Explorar addons</span></a>
+        <a class="menu-item" href="./#como-agregar" data-section="como-agregar"><span class="slot" aria-hidden="true">📖</span><span>Cómo instalar</span></a>
+        <a class="menu-item" href="licencia.html" data-section="licencia"><span class="slot" aria-hidden="true">📜</span><span>Licencia y créditos</span></a>
+      </div>
+      <div class="menu-social">
+        <p class="menu-label">Comunidad</p>
+        <a class="block-btn youtube" href="https://youtube.com/@edward_gamer_addons?si=EJ8PD0a1kC8iDQnB" target="_blank" rel="noopener noreferrer">▶ YouTube</a>
+        <a class="block-btn discord" href="https://discord.gg/uhgHaGa4Bv" target="_blank" rel="noopener noreferrer">💬 Discord</a>
+      </div>
     </div>
+    <div class="menu-backdrop" id="menuBackdrop" hidden></div>
   </nav>
 
   <!-- /// PORTADA -->
-  <header class="hero">
+  <header class="hero" id="inicio">
     <div class="hero-inner">
       <img src="img/logo-bm-256.png" alt="Logo de BloqueMods" class="hero-logo" width="128" height="128">
       <div class="hero-text">
@@ -55,7 +65,7 @@
         <p>Addons, texturas y mapas para Minecraft Bedrock. Descarga gratis y juega en tu mundo o servidor.</p>
         <div class="hero-actions">
           <a class="block-btn primary" href="#catalogo">Ver addons</a>
-          <a class="block-btn" href="https://youtube.com/@edward_gamer_addons?si=EJ8PD0a1kC8iDQnB" target="_blank" rel="noopener noreferrer">▶ Canal de YouTube</a>
+          <a class="block-btn" href="https://youtube.com/@edward_gamer_addons?si=EJ8PD0a1kC8iDQnB" target="_blank" rel="noopener noreferrer">▶ YouTube</a>
         </div>
         <p class="credits">Creado por <strong>Eduard Gamer Addons</strong></p>
       </div>
@@ -132,13 +142,14 @@
     <p class="footer-links">
       <a href="https://youtube.com/@edward_gamer_addons?si=EJ8PD0a1kC8iDQnB" target="_blank" rel="noopener noreferrer">YouTube</a>
       <a href="https://discord.gg/uhgHaGa4Bv" target="_blank" rel="noopener noreferrer">Discord</a>
-      <a href="LICENSE.txt">Licencia y créditos</a>
+      <a href="licencia.html">Licencia y créditos</a>
     </p>
     <p class="disclaimer">Sitio independiente de la comunidad. No afiliado a Mojang ni Microsoft.</p>
   </footer>
 
   <!-- /// CARGAR PRIMERO LOS DATOS, DESPUÉS EL SCRIPT -->
-  <script src="js/addons-data.js?v=3"></script>
-  <script src="js/script.js?v=3"></script>
+  <script src="js/addons-data.js?v=4"></script>
+  <script src="js/script.js?v=4"></script>
+  <script src="js/menu.js?v=4"></script>
 </body>
 </html>
