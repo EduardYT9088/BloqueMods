@@ -32,23 +32,50 @@ img{max-width:100%}
 /* =====================================================
    /// MENÚ SUPERIOR
    ===================================================== */
-.navbar{position:sticky;top:0;z-index:100;min-height:64px;padding:10px max(16px,calc((100% - 1100px)/2));display:flex;align-items:center;justify-content:space-between;gap:16px;background:#120e2ee6;border-bottom:2px solid var(--pizarra);backdrop-filter:blur(10px)}
+.navbar{position:sticky;top:0;z-index:100;min-height:64px;padding:10px max(16px,calc((100% - 1100px)/2));display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:2px solid var(--pizarra)}
+/* el desenfoque va en ::before para no atrapar al menú lateral (position:fixed) */
+.navbar::before{content:"";position:absolute;inset:0;z-index:-1;background:#120e2ee6;backdrop-filter:blur(10px)}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--pixel);font-weight:700;font-size:1.4rem;letter-spacing:.5px}
 .brand img{width:36px;height:36px;border-radius:8px}
 .hamburger{display:grid;place-content:center;gap:5px;width:46px;height:44px;border:2px solid var(--pizarra);border-radius:6px;background:var(--obsidiana);box-shadow:var(--relieve)}
 .hamburger span{display:block;width:20px;height:3px;background:var(--texto)}
-.hamburger[aria-expanded="true"] span:nth-child(2){opacity:0}
-.menu{display:none;position:absolute;right:max(16px,calc((100% - 1100px)/2));top:calc(100% + 6px);width:min(260px,calc(100vw - 32px));padding:8px;background:var(--obsidiana);border:2px solid var(--pizarra);border-radius:8px;box-shadow:0 18px 40px #00000080}
-.menu.open{display:block}
-.menu a{display:block;padding:12px;border-radius:4px;color:var(--suave)}
-.menu a:hover{background:var(--pizarra);color:var(--texto)}
+
+/* Panel lateral del menú (celular) */
+.menu{position:fixed;top:0;right:0;bottom:0;z-index:150;width:min(320px,86vw);display:flex;flex-direction:column;gap:18px;padding:16px;overflow-y:auto;
+  background:var(--obsidiana);border-left:2px solid var(--pizarra);box-shadow:-20px 0 50px #00000080;
+  transform:translateX(105%);visibility:hidden;transition:transform .22s ease-out,visibility 0s .22s}
+.menu.open{transform:none;visibility:visible;transition:transform .22s ease-out}
+.menu-backdrop{position:fixed;inset:0;z-index:140;background:#05041099;backdrop-filter:blur(2px)}
+.menu-backdrop[hidden]{display:none}
+body.menu-abierto{overflow:hidden}
+
+.menu-head{display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:2px solid var(--pizarra)}
+.menu-head span{font-family:var(--pixel);font-weight:700;font-size:1.5rem}
+.menu-close{width:44px;height:44px;border:2px solid var(--pizarra);border-radius:6px;background:var(--noche);font-size:1.1rem;box-shadow:var(--relieve)}
+
+/* Cada opción es una ranura de inventario + texto */
+.menu-links{display:flex;flex-direction:column;gap:6px}
+.menu-item{display:flex;align-items:center;gap:14px;padding:6px;border:2px solid transparent;border-radius:6px;color:var(--suave);font-weight:500;font-size:1.05rem}
+.slot{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:4px;background:#0a0819;font-size:1.4rem;box-shadow:inset 0 3px 0 #00000080,inset 0 -2px 0 #ffffff14}
+.menu-item:hover{background:#ffffff08;color:var(--texto)}
+.menu-item[aria-current="true"]{border-color:#fff;color:#fff;background:var(--pizarra)}
+.menu-item[aria-current="true"] .slot{background:var(--amatista);box-shadow:var(--relieve)}
+
+.menu-social{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-top:16px;border-top:2px solid var(--pizarra)}
+.menu-label{grid-column:1/-1;margin:0;color:var(--suave);font-size:.85rem}
+.block-btn.youtube{background:#e0302d;color:#fff}
+.block-btn.discord{background:#5865f2;color:#fff}
 
 /* En pantallas grandes el menú se muestra en línea */
 @media(min-width:900px){
-  .hamburger{display:none}
-  .menu{display:flex;position:static;width:auto;padding:0;gap:2px;background:none;border:0;box-shadow:none}
-  .menu a{padding:8px 12px;font-size:.92rem}
-  .menu a:first-child{display:none}
+  .hamburger,.menu-head,.menu-backdrop,.menu-label,.slot{display:none!important}
+  .menu{position:static;width:auto;flex-direction:row;align-items:center;gap:8px;padding:0;overflow:visible;background:none;border:0;box-shadow:none;transform:none;visibility:visible;transition:none}
+  .menu-links{flex-direction:row;gap:2px}
+  .menu-item{padding:6px 12px;font-size:.92rem}
+  .menu-item[data-section="inicio"]{display:none}
+  .menu-item[aria-current="true"]{border-color:transparent;background:var(--pizarra)}
+  .menu-social{margin:0;padding:0;border:0;display:flex;gap:8px}
+  .menu-social .block-btn{min-height:38px;padding:6px 14px;font-size:.88rem}
 }
 
 /* =====================================================
@@ -227,4 +254,24 @@ footer strong{color:var(--diamante)}
   html{scroll-behavior:auto}
   .terrain{animation:none}
   .block-btn{transition:none}
+  .menu,.menu.open{transition:none}
 }
+
+/* =====================================================
+   /// PÁGINA DE LICENCIA Y CRÉDITOS
+   ===================================================== */
+.legal{width:min(760px,100%);padding-top:36px}
+.legal h1{margin:0;font-family:var(--pixel);font-weight:700;font-size:clamp(2rem,7vw,3rem);line-height:1.1;text-shadow:3px 3px 0 #5b3fc4}
+.legal-intro{margin:14px 0 0;color:#cfcbef;font-size:1.08rem}
+.legal-intro strong,.legal-block strong{color:var(--diamante)}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0}
+.rule{padding:18px;background:var(--obsidiana);border:2px solid var(--pizarra);border-radius:8px}
+.rule.ok{border-top:6px solid #3ddc84}
+.rule.no{border-top:6px solid #ff5d5d}
+.rule h2,.legal-block h2{margin:0 0 8px;font-size:1.15rem}
+.rule ul{margin:0;padding-left:20px;color:var(--suave)}
+.rule li+li{margin-top:6px}
+.legal-block{margin:0 0 24px}
+.legal-block p{margin:0 0 8px;color:var(--suave)}
+.legal-block a{color:var(--diamante);text-decoration:underline;text-underline-offset:3px}
+@media(max-width:600px){.rules{grid-template-columns:1fr}}

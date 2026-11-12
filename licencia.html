@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- /// CONFIGURACIÓN GENERAL -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#120e2e">
+  <meta name="description" content="Licencia de uso y créditos de los addons de BloqueMods.">
+  <title>Licencia y créditos | BloqueMods</title>
+
+  <!-- /// VISTA PREVIA AL COMPARTIR EL ENLACE (WhatsApp, Discord...) -->
+  <meta property="og:title" content="BloqueMods">
+  <meta property="og:description" content="Addons, texturas y mapas para Minecraft Bedrock.">
+  <meta property="og:image" content="img/logo-bm-256.png">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" type="image/png" href="img/favicon.png">
+
+  <!-- /// FUENTES: Pixelify Sans (títulos) + Rubik (texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Rubik:wght@400;500;700&display=swap">
+
+  <!-- /// ARCHIVO DE ESTILOS -->
+  <link rel="stylesheet" href="./css/style.css?v=4">
+</head>
+<body data-page="licencia">
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+
+  <!-- /// MENÚ PRINCIPAL -->
+  <nav class="navbar" aria-label="Principal">
+    <a class="brand" href="index.html">
+      <img src="img/logo-bm-256.png" alt="" width="36" height="36">
+      <span>BloqueMods</span>
+    </a>
+    <button class="hamburger" id="menuButton" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="menu" id="menu">
+      <div class="menu-head">
+        <span>Menú</span>
+        <button class="menu-close" id="menuClose" type="button" aria-label="Cerrar menú">✕</button>
+      </div>
+      <div class="menu-links">
+        <a class="menu-item" href="index.html#inicio" data-section="inicio"><span class="slot" aria-hidden="true">🏠</span><span>Inicio</span></a>
+        <a class="menu-item" href="index.html#catalogo" data-section="catalogo"><span class="slot" aria-hidden="true">🧱</span><span>Explorar addons</span></a>
+        <a class="menu-item" href="index.html#como-agregar" data-section="como-agregar"><span class="slot" aria-hidden="true">📖</span><span>Cómo instalar</span></a>
+        <a class="menu-item" href="licencia.html" data-section="licencia"><span class="slot" aria-hidden="true">📜</span><span>Licencia y créditos</span></a>
+      </div>
+      <div class="menu-social">
+        <p class="menu-label">Comunidad</p>
+        <a class="block-btn youtube" href="https://youtube.com/@edward_gamer_addons?si=EJ8PD0a1kC8iDQnB" target="_blank" rel="noopener noreferrer">▶ YouTube</a>
+        <a class="block-btn discord" href="https://discord.gg/uhgHaGa4Bv" target="_blank" rel="noopener noreferrer">💬 Discord</a>
+      </div>
+    </div>
+    <div class="menu-backdrop" id="menuBackdrop" hidden></div>
+  </nav>
+
+  <main class="legal" id="contenido">
+    <h1>Licencia y créditos</h1>
+    <p class="legal-intro">Todo el contenido de BloqueMods es creado por <strong>Eduard Gamer Addons</strong>. Puedes usarlo gratis siguiendo estas reglas.</p>
+
+    <section class="rules">
+      <div class="rule ok">
+        <h2>✔ Sí puedes</h2>
+        <ul>
+          <li>Descargar y usar los addons en tus mundos y servidores.</li>
+          <li>Hacer videos o directos mostrando los addons, dando créditos a Eduard Gamer Addons.</li>
+          <li>Compartir el enlace de esta página o del canal de YouTube.</li>
+        </ul>
+      </div>
+      <div class="rule no">
+        <h2>✖ No puedes</h2>
+        <ul>
+          <li>Volver a subir los archivos a otra página o enlace de descarga.</li>
+          <li>Venderlos o ponerlos detrás de acortadores de pago.</li>
+          <li>Editar un addon y publicarlo como si fuera tuyo.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="legal-block">
+      <h2>Créditos</h2>
+      <p>Addons, portadas y página: <strong>Eduard Gamer Addons</strong>.</p>
+      <p>¿Quieres usar un addon en un proyecto, mod pack o servidor grande? Pide permiso primero por <a href="https://discord.gg/uhgHaGa4Bv" target="_blank" rel="noopener noreferrer">Discord</a>.</p>
+    </section>
+
+    <section class="legal-block">
+      <h2>Aviso</h2>
+      <p>BloqueMods es un sitio de la comunidad. No es un producto oficial de Minecraft ni está aprobado o asociado con Mojang o Microsoft. Minecraft es una marca de Mojang Studios.</p>
+      <p>Los addons se ofrecen tal como están. Haz una copia de tu mundo antes de instalar cualquier addon.</p>
+    </section>
+
+    <a class="block-btn primary" href="index.html#catalogo">Volver a los addons</a>
+  </main>
+
+  <!-- /// CRÉDITOS -->
+  <footer>
+    <p>© <span id="year"></span> BloqueMods · Creado por <strong>Eduard Gamer Addons</strong></p>
+    <p class="footer-links">
+      <a href="https://youtube.com/@edward_gamer_addons?si=EJ8PD0a1kC8iDQnB" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="https://discord.gg/uhgHaGa4Bv" target="_blank" rel="noopener noreferrer">Discord</a>
+      <a href="licencia.html">Licencia y créditos</a>
+    </p>
+    <p class="disclaimer">Sitio independiente de la comunidad. No afiliado a Mojang ni Microsoft.</p>
+  </footer>
+
+  <script src="js/menu.js?v=4"></script>
+</body>
+</html>

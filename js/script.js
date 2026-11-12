@@ -262,24 +262,5 @@ resetButton.addEventListener("click", () => {
   renderAddons();
 });
 
-// /// MENÚ DESPLEGABLE
-const menu = document.getElementById("menu");
-const menuButton = document.getElementById("menuButton");
-menuButton.addEventListener("click", () => {
-  const open = menu.classList.toggle("open");
-  menuButton.setAttribute("aria-expanded", String(open));
-});
-document.addEventListener("click", event => {
-  if (!menu.contains(event.target) && !menuButton.contains(event.target)) {
-    menu.classList.remove("open");
-    menuButton.setAttribute("aria-expanded", "false");
-  }
-});
-menu.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
-  menu.classList.remove("open");
-  menuButton.setAttribute("aria-expanded", "false");
-}));
-
 // /// AÑO AUTOMÁTICO Y ARRANQUE
-document.getElementById("year").textContent = new Date().getFullYear();
 renderAddons();
