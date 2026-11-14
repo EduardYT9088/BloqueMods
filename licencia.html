@@ -22,9 +22,10 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Rubik:wght@400;500;700&display=swap">
 
   <!-- /// ARCHIVO DE ESTILOS -->
-  <link rel="stylesheet" href="./css/style.css?v=4">
+  <link rel="stylesheet" href="./css/style.css?v=5">
 </head>
 <body data-page="licencia">
+  <script src="js/icons.js?v=5"></script>
   <a class="skip" href="#contenido">Saltar al contenido</a>
 
   <!-- /// MENÚ PRINCIPAL -->
@@ -39,18 +40,18 @@
     <div class="menu" id="menu">
       <div class="menu-head">
         <span>Menú</span>
-        <button class="menu-close" id="menuClose" type="button" aria-label="Cerrar menú">✕</button>
+        <button class="menu-close" id="menuClose" type="button" aria-label="Cerrar menú"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button>
       </div>
       <div class="menu-links">
-        <a class="menu-item" href="index.html#inicio" data-section="inicio"><span class="slot" aria-hidden="true">🏠</span><span>Inicio</span></a>
-        <a class="menu-item" href="index.html#catalogo" data-section="catalogo"><span class="slot" aria-hidden="true">🧱</span><span>Explorar addons</span></a>
-        <a class="menu-item" href="index.html#como-agregar" data-section="como-agregar"><span class="slot" aria-hidden="true">📖</span><span>Cómo instalar</span></a>
-        <a class="menu-item" href="licencia.html" data-section="licencia"><span class="slot" aria-hidden="true">📜</span><span>Ver licencia</span></a>
+        <a class="menu-item" href="index.html#inicio" data-section="inicio"><span class="slot" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-home"></use></svg></span><span>Inicio</span></a>
+        <a class="menu-item" href="index.html#catalogo" data-section="catalogo"><span class="slot" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-cube"></use></svg></span><span>Explorar addons</span></a>
+        <a class="menu-item" href="index.html#como-agregar" data-section="como-agregar"><span class="slot" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-book"></use></svg></span><span>Cómo instalar</span></a>
+        <a class="menu-item" href="licencia.html" data-section="licencia"><span class="slot" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-doc"></use></svg></span><span>Ver licencia</span></a>
       </div>
       <div class="menu-social">
         <p class="menu-label">Comunidad</p>
-        <a class="block-btn youtube" href="https://youtube.com/@edward_gamer_addons?si=EJ8PD0a1kC8iDQnB" target="_blank" rel="noopener noreferrer">▶ YouTube</a>
-        <a class="block-btn discord" href="https://discord.gg/uhgHaGa4Bv" target="_blank" rel="noopener noreferrer">💬 Discord</a>
+        <a class="block-btn youtube" href="https://youtube.com/@edward_gamer_addons?si=EJ8PD0a1kC8iDQnB" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-play"></use></svg>YouTube</a>
+        <a class="block-btn discord" href="https://discord.gg/uhgHaGa4Bv" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-chat"></use></svg>Discord</a>
       </div>
     </div>
     <div class="menu-backdrop" id="menuBackdrop" hidden></div>
@@ -62,7 +63,7 @@
 
     <section class="rules">
       <div class="rule ok">
-        <h2>✔ Sí puedes</h2>
+        <h2><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Sí puedes</h2>
         <ul>
           <li>Descargar y usar los addons en tus mundos y servidores.</li>
           <li>Hacer videos o directos mostrando los addons, dando créditos a Eduard Gamer Addons.</li>
@@ -70,7 +71,7 @@
         </ul>
       </div>
       <div class="rule no">
-        <h2>✖ No puedes</h2>
+        <h2><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg>No puedes</h2>
         <ul>
           <li>Volver a subir los archivos a otra página o enlace de descarga.</li>
           <li>Venderlos o ponerlos detrás de acortadores de pago.</li>
@@ -96,14 +97,26 @@
 
   <!-- /// CRÉDITOS -->
   <footer>
-    <p>© <span id="year"></span> BloqueMods · Creado por <strong>Eduard Gamer Addons</strong></p>
-    <p class="footer-links">
-      <a href="https://youtube.com/@edward_gamer_addons?si=EJ8PD0a1kC8iDQnB" target="_blank" rel="noopener noreferrer">YouTube</a>
-      <a href="https://discord.gg/uhgHaGa4Bv" target="_blank" rel="noopener noreferrer">Discord</a>
-    </p>
-    <p class="disclaimer">Sitio independiente de la comunidad. No afiliado a Mojang ni Microsoft.</p>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html"><img src="img/logo-bm-256.png" alt="" width="36" height="36"><span>BloqueMods</span></a>
+        <p>Addons, texturas y mapas para Minecraft Bedrock, creados por <strong>Eduard Gamer Addons</strong>.</p>
+      </div>
+      <nav class="footer-col" aria-label="Secciones">
+        <h2>Secciones</h2>
+        <a href="index.html#catalogo">Catálogo</a>
+        <a href="index.html#como-agregar">Cómo instalar</a>
+        <a href="index.html#preguntas">Preguntas frecuentes</a>
+      </nav>
+      <nav class="footer-col" aria-label="Comunidad">
+        <h2>Comunidad</h2>
+        <a href="https://youtube.com/@edward_gamer_addons?si=EJ8PD0a1kC8iDQnB" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a href="https://discord.gg/uhgHaGa4Bv" target="_blank" rel="noopener noreferrer">Discord</a>
+      </nav>
+    </div>
+    <p class="disclaimer">© <span id="year"></span> BloqueMods. Sitio independiente de la comunidad, no afiliado a Mojang ni Microsoft.</p>
   </footer>
 
-  <script src="js/menu.js?v=4"></script>
+  <script src="js/menu.js?v=5"></script>
 </body>
 </html>

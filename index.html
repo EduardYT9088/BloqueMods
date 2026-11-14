@@ -22,9 +22,10 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Rubik:wght@400;500;700&display=swap">
 
   <!-- /// ARCHIVO DE ESTILOS -->
-  <link rel="stylesheet" href="./css/style.css?v=4">
+  <link rel="stylesheet" href="./css/style.css?v=5">
 </head>
 <body>
+  <script src="js/icons.js?v=5"></script>
   <a class="skip" href="#catalogo">Saltar al catálogo</a>
 
   <!-- /// MENÚ PRINCIPAL -->
@@ -39,18 +40,18 @@
     <div class="menu" id="menu">
       <div class="menu-head">
         <span>Menú</span>
-        <button class="menu-close" id="menuClose" type="button" aria-label="Cerrar menú">✕</button>
+        <button class="menu-close" id="menuClose" type="button" aria-label="Cerrar menú"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button>
       </div>
       <div class="menu-links">
-        <a class="menu-item" href="./#inicio" data-section="inicio"><span class="slot" aria-hidden="true">🏠</span><span>Inicio</span></a>
-        <a class="menu-item" href="./#catalogo" data-section="catalogo"><span class="slot" aria-hidden="true">🧱</span><span>Explorar addons</span></a>
-        <a class="menu-item" href="./#como-agregar" data-section="como-agregar"><span class="slot" aria-hidden="true">📖</span><span>Cómo instalar</span></a>
-        <a class="menu-item" href="licencia.html" data-section="licencia"><span class="slot" aria-hidden="true">📜</span><span>Ver licencia</span></a>
+        <a class="menu-item" href="./#inicio" data-section="inicio"><span class="slot" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-home"></use></svg></span><span>Inicio</span></a>
+        <a class="menu-item" href="./#catalogo" data-section="catalogo"><span class="slot" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-cube"></use></svg></span><span>Explorar addons</span></a>
+        <a class="menu-item" href="./#como-agregar" data-section="como-agregar"><span class="slot" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-book"></use></svg></span><span>Cómo instalar</span></a>
+        <a class="menu-item" href="licencia.html" data-section="licencia"><span class="slot" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-doc"></use></svg></span><span>Ver licencia</span></a>
       </div>
       <div class="menu-social">
         <p class="menu-label">Comunidad</p>
-        <a class="block-btn youtube" href="https://youtube.com/@edward_gamer_addons?si=EJ8PD0a1kC8iDQnB" target="_blank" rel="noopener noreferrer">▶ YouTube</a>
-        <a class="block-btn discord" href="https://discord.gg/uhgHaGa4Bv" target="_blank" rel="noopener noreferrer">💬 Discord</a>
+        <a class="block-btn youtube" href="https://youtube.com/@edward_gamer_addons?si=EJ8PD0a1kC8iDQnB" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-play"></use></svg>YouTube</a>
+        <a class="block-btn discord" href="https://discord.gg/uhgHaGa4Bv" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-chat"></use></svg>Discord</a>
       </div>
     </div>
     <div class="menu-backdrop" id="menuBackdrop" hidden></div>
@@ -65,7 +66,7 @@
         <p>Addons, texturas y mapas para Minecraft Bedrock. Descarga gratis y juega en tu mundo o servidor.</p>
         <div class="hero-actions">
           <a class="block-btn primary" href="#catalogo">Ver addons</a>
-          <a class="block-btn" href="https://youtube.com/@edward_gamer_addons?si=EJ8PD0a1kC8iDQnB" target="_blank" rel="noopener noreferrer">▶ YouTube</a>
+          <a class="block-btn" href="https://youtube.com/@edward_gamer_addons?si=EJ8PD0a1kC8iDQnB" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-play"></use></svg>YouTube</a>
         </div>
         <p class="credits">Creado por <strong>Eduard Gamer Addons</strong></p>
       </div>
@@ -75,6 +76,13 @@
   </header>
 
   <main>
+    <!-- /// DATOS RÁPIDOS -->
+    <ul class="perks">
+      <li><svg class="icon" aria-hidden="true"><use href="#i-cube"></use></svg><span>Para Minecraft Bedrock</span></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-tag"></use></svg><span>Descarga gratis</span></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-chat"></use></svg><span>Ayuda en Discord</span></li>
+    </ul>
+
     <!-- /// BUSCADOR Y ORDENAMIENTO -->
     <section class="catalog-tools" aria-label="Buscar y ordenar">
       <label class="searchbox">
@@ -93,12 +101,12 @@
 
     <!-- /// FILTROS (barra estilo hotbar): LAS ETIQUETAS DEBEN COINCIDIR CON addons-data.js -->
     <div class="filters" id="filters" role="toolbar" aria-label="Filtrar por categoría">
-      <button class="filter active" data-filter="todos" type="button" aria-pressed="true"><span class="slot-icon">🧰</span>Todos</button>
-      <button class="filter" data-filter="Texturas" type="button" aria-pressed="false"><span class="slot-icon">🎨</span>Texturas</button>
-      <button class="filter" data-filter="Addon" type="button" aria-pressed="false"><span class="slot-icon">🧩</span>Addons</button>
-      <button class="filter" data-filter="Mapas" type="button" aria-pressed="false"><span class="slot-icon">🗺️</span>Mapas</button>
-      <button class="filter" data-filter="Animación" type="button" aria-pressed="false"><span class="slot-icon">🎬</span>Animación</button>
-      <button class="filter" data-filter="Herramientas" type="button" aria-pressed="false"><span class="slot-icon">⛏️</span>Herramientas</button>
+      <button class="filter active" data-filter="todos" type="button" aria-pressed="true"><span class="slot-icon"><svg class="icon" aria-hidden="true"><use href="#i-grid"></use></svg></span>Todos</button>
+      <button class="filter" data-filter="Texturas" type="button" aria-pressed="false"><span class="slot-icon"><svg class="icon" aria-hidden="true"><use href="#i-image"></use></svg></span>Texturas</button>
+      <button class="filter" data-filter="Addon" type="button" aria-pressed="false"><span class="slot-icon"><svg class="icon" aria-hidden="true"><use href="#i-puzzle"></use></svg></span>Addons</button>
+      <button class="filter" data-filter="Mapas" type="button" aria-pressed="false"><span class="slot-icon"><svg class="icon" aria-hidden="true"><use href="#i-map"></use></svg></span>Mapas</button>
+      <button class="filter" data-filter="Animación" type="button" aria-pressed="false"><span class="slot-icon"><svg class="icon" aria-hidden="true"><use href="#i-film"></use></svg></span>Animación</button>
+      <button class="filter" data-filter="Herramientas" type="button" aria-pressed="false"><span class="slot-icon"><svg class="icon" aria-hidden="true"><use href="#i-pickaxe"></use></svg></span>Herramientas</button>
     </div>
 
     <!-- /// AQUÍ JAVASCRIPT INSERTA LAS TARJETAS -->
@@ -109,7 +117,7 @@
       </div>
       <div class="grid" id="addonsGrid"></div>
       <div class="empty" id="emptyMessage" hidden>
-        <div class="empty-icon" aria-hidden="true">🔎</div>
+        <div class="empty-icon" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg></div>
         <h3>Nada coincide con tu búsqueda</h3>
         <p>Prueba con otra palabra o muestra todas las categorías.</p>
         <button class="block-btn primary" id="resetButton" type="button">Mostrar todo</button>
@@ -134,21 +142,61 @@
         </li>
       </ol>
     </section>
+
+    <!-- /// PREGUNTAS FRECUENTES -->
+    <section class="faq" id="preguntas">
+      <h2>Preguntas frecuentes</h2>
+      <details>
+        <summary>¿Los addons son gratis?</summary>
+        <p>Sí. Todos los addons de BloqueMods se descargan gratis.</p>
+      </details>
+      <details>
+        <summary>¿Funcionan en Minecraft Java?</summary>
+        <p>No. Están hechos para Minecraft Bedrock: celular, Windows y consolas.</p>
+      </details>
+      <details>
+        <summary>El archivo no se abre en Minecraft, ¿qué hago?</summary>
+        <p>Revisa que el archivo termine en <code>.mcpack</code> o <code>.mcaddon</code>. Si tu celular lo guardó como <code>.zip</code>, cámbiale el nombre para que termine en <code>.mcpack</code> y ábrelo otra vez. Actualiza Minecraft a la versión que indica el addon.</p>
+      </details>
+      <details>
+        <summary>¿Puedo usarlos en mi servidor o en mis videos?</summary>
+        <p>Sí, dando créditos a Eduard Gamer Addons. No se permite volver a subir los archivos. Lee las reglas completas en <a href="licencia.html">la licencia</a>.</p>
+      </details>
+      <details>
+        <summary>Encontré un error en un addon</summary>
+        <p>Cuéntalo en el <a href="https://discord.gg/uhgHaGa4Bv" target="_blank" rel="noopener noreferrer">Discord</a> con la versión de Minecraft que usas y una captura del problema.</p>
+      </details>
+    </section>
   </main>
 
   <!-- /// CRÉDITOS -->
   <footer>
-    <p>© <span id="year"></span> BloqueMods · Creado por <strong>Eduard Gamer Addons</strong></p>
-    <p class="footer-links">
-      <a href="https://youtube.com/@edward_gamer_addons?si=EJ8PD0a1kC8iDQnB" target="_blank" rel="noopener noreferrer">YouTube</a>
-      <a href="https://discord.gg/uhgHaGa4Bv" target="_blank" rel="noopener noreferrer">Discord</a>
-    </p>
-    <p class="disclaimer">Sitio independiente de la comunidad. No afiliado a Mojang ni Microsoft.</p>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="./"><img src="img/logo-bm-256.png" alt="" width="36" height="36"><span>BloqueMods</span></a>
+        <p>Addons, texturas y mapas para Minecraft Bedrock, creados por <strong>Eduard Gamer Addons</strong>.</p>
+      </div>
+      <nav class="footer-col" aria-label="Secciones">
+        <h2>Secciones</h2>
+        <a href="./#catalogo">Catálogo</a>
+        <a href="./#como-agregar">Cómo instalar</a>
+        <a href="./#preguntas">Preguntas frecuentes</a>
+      </nav>
+      <nav class="footer-col" aria-label="Comunidad">
+        <h2>Comunidad</h2>
+        <a href="https://youtube.com/@edward_gamer_addons?si=EJ8PD0a1kC8iDQnB" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a href="https://discord.gg/uhgHaGa4Bv" target="_blank" rel="noopener noreferrer">Discord</a>
+      </nav>
+    </div>
+    <p class="disclaimer">© <span id="year"></span> BloqueMods. Sitio independiente de la comunidad, no afiliado a Mojang ni Microsoft.</p>
   </footer>
 
+  <button class="to-top" id="toTop" type="button" aria-label="Volver arriba" hidden><svg class="icon" aria-hidden="true"><use href="#i-up"></use></svg></button>
+  <div class="toast" id="toast" role="status" hidden></div>
+
   <!-- /// CARGAR PRIMERO LOS DATOS, DESPUÉS EL SCRIPT -->
-  <script src="js/addons-data.js?v=4"></script>
-  <script src="js/script.js?v=4"></script>
-  <script src="js/menu.js?v=4"></script>
+  <script src="js/addons-data.js?v=5"></script>
+  <script src="js/script.js?v=5"></script>
+  <script src="js/menu.js?v=5"></script>
 </body>
 </html>

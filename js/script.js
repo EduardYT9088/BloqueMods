@@ -98,7 +98,7 @@ function createAddonCard(addon, featured = false) {
   image.addEventListener("error", () => {
     const fallback = document.createElement("div");
     fallback.className = "cover-fallback";
-    fallback.textContent = "🧱";
+    fallback.appendChild(icon("cube"));
     image.replaceWith(fallback);
   }, {once:true});
   coverWrap.appendChild(image);
@@ -182,7 +182,7 @@ function createAddonCard(addon, featured = false) {
 
   const button = document.createElement("a");
   button.className = "block-btn download";
-  button.textContent = "⬇ Descargar";
+  button.append(icon("download"), "Descargar");
   if (addon.download_link && addon.download_link !== "#") {
     button.href = addon.download_link;
     button.target = "_blank";
@@ -194,7 +194,18 @@ function createAddonCard(addon, featured = false) {
     button.setAttribute("aria-disabled", "true");
     button.textContent = "Descarga pronto";
   }
-  content.appendChild(button);
+  // Descargar + compartir
+  const actions = document.createElement("div");
+  actions.className = "card-actions";
+  const share = document.createElement("button");
+  share.type = "button";
+  share.className = "block-btn share";
+  share.setAttribute("aria-label", `Compartir ${visibleTitle}`);
+  share.appendChild(icon("share"));
+  share.addEventListener("click", () => shareAddon(addon, visibleTitle));
+  actions.append(button, share);
+  content.appendChild(actions);
+  card.id = `addon-${addon.id}`;
   card.appendChild(content);
   return card;
 }
@@ -262,5 +273,43 @@ resetButton.addEventListener("click", () => {
   renderAddons();
 });
 
-// /// AÑO AUTOMÁTICO Y ARRANQUE
+// /// COMPARTIR UN ADDON (enlace directo a su tarjeta)
+const toast = document.getElementById("toast");
+let toastTimer;
+function showToast(message) {
+  toast.textContent = message;
+  toast.hidden = false;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { toast.hidden = true; }, 2600);
+}
+
+async function shareAddon(addon, title) {
+  const url = `${location.origin}${location.pathname}#addon-${addon.id}`;
+  if (navigator.share) {
+    try { await navigator.share({ title: `${title} | BloqueMods`, url }); } catch (error) { /* cancelado */ }
+    return;
+  }
+  try {
+    await navigator.clipboard.writeText(url);
+    showToast("Enlace copiado");
+  } catch (error) {
+    showToast("No se pudo copiar el enlace");
+  }
+}
+
+// /// BOTÓN PARA VOLVER ARRIBA
+const toTop = document.getElementById("toTop");
+window.addEventListener("scroll", () => { toTop.hidden = window.scrollY < 600; }, { passive: true });
+toTop.addEventListener("click", () => window.scrollTo({ top: 0 }));
+
+// /// ARRANQUE
 renderAddons();
+
+// Si el enlace trae #addon-ID, baja hasta esa tarjeta y la resalta
+if (location.hash.startsWith("#addon-")) {
+  const target = document.getElementById(location.hash.slice(1));
+  if (target) {
+    target.scrollIntoView({ block: "center" });
+    target.classList.add("highlight");
+  }
+}

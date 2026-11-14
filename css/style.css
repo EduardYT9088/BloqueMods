@@ -134,7 +134,8 @@ main{width:min(1100px,100%);margin:auto;padding:12px 16px 56px}
 .filters{display:flex;gap:4px;margin:18px 0 8px;padding:4px;width:max-content;max-width:100%;overflow-x:auto;background:#00000055;border:2px solid var(--pizarra);border-radius:6px;scrollbar-width:none}
 .filters::-webkit-scrollbar{display:none}
 .filter{flex:none;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:84px;padding:8px 10px 6px;border:2px solid transparent;border-radius:4px;background:var(--obsidiana);color:var(--suave);font-size:.78rem;font-weight:500;box-shadow:var(--relieve)}
-.slot-icon{font-size:1.35rem;line-height:1.2}
+.slot-icon{display:grid;place-items:center;height:28px}
+.slot-icon .icon{width:22px;height:22px}
 .filter:hover{color:var(--texto)}
 /* ranura seleccionada: marco blanco como en el juego */
 .filter.active{border-color:#fff;color:#fff;background:var(--pizarra);box-shadow:0 0 0 2px #00000099,var(--relieve)}
@@ -152,7 +153,8 @@ main{width:min(1100px,100%);margin:auto;padding:12px 16px 56px}
 .card:hover{border-color:#4a3f8f}
 .cover-wrap{position:relative;background:var(--pizarra)}
 .cover,.cover-fallback{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
-.cover-fallback{display:grid;place-items:center;font-size:54px;background:var(--pizarra)}
+.cover-fallback{display:grid;place-items:center;background:var(--pizarra);color:var(--suave)}
+.cover-fallback .icon{width:56px;height:56px}
 .content{flex:1;display:flex;flex-direction:column;padding:16px 18px 18px}
 .content h3{margin:0 0 8px;font-family:var(--pixel);font-weight:700;font-size:1.45rem;line-height:1.15;letter-spacing:.3px}
 .content p{margin:0;color:var(--suave);font-size:.95rem;overflow-wrap:anywhere}
@@ -164,7 +166,10 @@ main{width:min(1100px,100%);margin:auto;padding:12px 16px 56px}
 .facts div{padding:8px 10px;background:#0a0819;border-radius:4px;min-width:0}
 .facts dt{color:#7d79a3;font-size:.72rem}
 .facts dd{margin:0;font-weight:500;font-size:.86rem;overflow-wrap:anywhere}
-.content .block-btn{margin-top:auto}
+.card-actions{display:flex;gap:8px;margin-top:auto}
+.card-actions .download{flex:1}
+.block-btn.share{flex:none;width:48px;padding:0}
+.card.highlight{border-color:var(--diamante);box-shadow:0 0 0 3px #3fe0d040}
 
 /* Tarjeta destacada: el addon más reciente ocupa todo el ancho */
 .card.featured{grid-column:1/-1;flex-direction:row}
@@ -198,7 +203,7 @@ main{width:min(1100px,100%);margin:auto;padding:12px 16px 56px}
    ===================================================== */
 .empty{text-align:center;color:var(--suave);padding:36px 16px;border:2px dashed var(--pizarra);border-radius:8px}
 .empty[hidden]{display:none}
-.empty-icon{font-size:42px}
+.empty-icon .icon{width:40px;height:40px}
 .empty h3{margin:6px 0 4px;color:var(--texto)}
 .empty p{margin:0 0 16px}
 
@@ -217,12 +222,16 @@ main{width:min(1100px,100%);margin:auto;padding:12px 16px 56px}
 /* =====================================================
    /// PIE DE PÁGINA
    ===================================================== */
-footer{text-align:center;padding:28px 16px 36px;border-top:2px solid var(--pizarra);color:var(--suave);font-size:.88rem}
-footer p{margin:6px 0}
+footer{padding:36px max(16px,calc((100% - 1100px)/2)) 28px;border-top:2px solid var(--pizarra);background:var(--cielo);color:var(--suave);font-size:.92rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:28px}
+.footer-brand p{margin:12px 0 0;max-width:30em}
 footer strong{color:var(--diamante)}
-.footer-links{display:flex;justify-content:center;flex-wrap:wrap;gap:18px}
-.footer-links a{color:var(--texto);text-decoration:underline;text-decoration-color:var(--pizarra);text-underline-offset:4px}
-.disclaimer{color:#7d79a3;font-size:.8rem}
+.footer-col{display:flex;flex-direction:column;gap:2px}
+.footer-col h2{margin:0 0 6px;color:var(--texto);font-size:.95rem}
+.footer-col a{padding:6px 0;color:var(--suave)}
+.footer-col a:hover{color:var(--texto);text-decoration:underline;text-underline-offset:4px}
+.disclaimer{margin:28px 0 0;padding-top:16px;border-top:1px solid var(--pizarra);color:#7d79a3;font-size:.82rem}
+@media(max-width:600px){.footer-grid{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}}
 
 /* =====================================================
    /// TABLETAS Y CELULARES
@@ -275,3 +284,42 @@ footer strong{color:var(--diamante)}
 .legal-block p{margin:0 0 8px;color:var(--suave)}
 .legal-block a{color:var(--diamante);text-decoration:underline;text-underline-offset:3px}
 @media(max-width:600px){.rules{grid-template-columns:1fr}}
+
+/* =====================================================
+   /// ICONOS (js/icons.js)
+   ===================================================== */
+.icon{flex:none;width:1.25em;height:1.25em;vertical-align:-.2em}
+.slot .icon{width:24px;height:24px}
+.menu-close{display:grid;place-items:center}
+.rule h2{display:flex;align-items:center;gap:8px}
+.rule.ok h2 .icon{color:#3ddc84}
+.rule.no h2 .icon{color:#ff5d5d}
+
+/* =====================================================
+   /// DATOS RÁPIDOS BAJO LA PORTADA
+   ===================================================== */
+.perks{list-style:none;display:flex;flex-wrap:wrap;gap:8px 22px;margin:8px 0 22px;padding:0;color:var(--suave);font-size:.92rem}
+.perks li{display:flex;align-items:center;gap:8px}
+.perks .icon{color:var(--diamante)}
+
+/* =====================================================
+   /// PREGUNTAS FRECUENTES
+   ===================================================== */
+.faq{margin-top:56px}
+.faq h2{margin:0 0 18px;font-family:var(--pixel);font-weight:700;font-size:clamp(1.6rem,4vw,2rem);letter-spacing:.5px}
+.faq details{border:2px solid var(--pizarra);border-radius:8px;background:var(--obsidiana)}
+.faq details+details{margin-top:8px}
+.faq summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;font-weight:500;cursor:pointer;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:4px;background:var(--pizarra);font-family:var(--pixel);font-size:1.2rem;line-height:1}
+.faq details[open] summary::after{content:"\2212";background:var(--amatista)}
+.faq details p{margin:0;padding:0 16px 16px;max-width:65ch;color:var(--suave)}
+.faq a{color:var(--diamante);text-decoration:underline;text-underline-offset:3px}
+.faq code{color:var(--diamante);font-size:.88em}
+
+/* =====================================================
+   /// VOLVER ARRIBA Y AVISOS
+   ===================================================== */
+.to-top{position:fixed;right:16px;bottom:16px;z-index:90;display:grid;place-items:center;width:48px;height:48px;border:2px solid #00000066;border-radius:4px;background:var(--amatista);color:#fff;box-shadow:var(--relieve),0 8px 20px #00000080}
+.to-top[hidden],.toast[hidden]{display:none}
+.toast{position:fixed;left:50%;bottom:24px;z-index:95;transform:translateX(-50%);padding:10px 18px;border:2px solid var(--diamante);border-radius:6px;background:var(--obsidiana);font-weight:500}
